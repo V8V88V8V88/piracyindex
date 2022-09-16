@@ -21,3 +21,5 @@ http://www.streamlord.com/
 https://yesmovies.ag/
 
 https://111.90.159.159/
+
+http://173.249.48.243/movies2/ (Disney Movies)
