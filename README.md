@@ -1,6 +1,6 @@
 # piracyindex
 links to some shady sites ;)
-
+www.piracyindex.tk
 
 <strong><u>Streaming Sites</u></strong>
 
@@ -20,6 +20,12 @@ http://www.streamlord.com/
 
 https://yesmovies.ag/
 
-https://111.90.150.149/ (Bollywood)
+(Bollywood)
 
-http://173.249.48.243/movies2/ (Disney Movies)
+https://111.90.150.149/ 
+
+http://103.203.93.4/
+
+(Disney Movies)
+
+http://173.249.48.243/movies2/ 
