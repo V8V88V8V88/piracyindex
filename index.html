@@ -56,6 +56,9 @@
             padding: 0;
             margin-left: 0;
         }
+        ol {
+                text-align: left;
+            }
 
         li {
             margin-bottom: 8px;
@@ -80,6 +83,9 @@
             display: block;
             margin: 0 auto;
         }
+            .content-column section {
+            display: none;
+        }
 
         @media (max-width: 767px) {
             .index-column {
@@ -99,10 +105,11 @@
         </header>
 
         <nav>
-            <ul>
-                <li><a href="#torrent">Torrent Sites</a></li>
-                <li><a href="#stream">Streaming Sites</a></li>
-                <li><a href="#books">Books Piracy</a></li>
+             <ul>
+                <li><a href="#" id="homeButton" onclick="showContent('')">Home</a></li>
+                <li><a href="#" onclick="showContent('torrent')">Torrent Sites</a></li>
+                <li><a href="#" onclick="showContent('media')">Movies & TV</a></li>
+                <li><a href="#" onclick="showContent('books')">Books Piracy</a></li>
             </ul>
         </nav>
     </div>
@@ -125,7 +132,7 @@
             </ol>
         </section>
 
-        <section id="stream">
+        <section id="media">
             <h2>Streaming Sites</h2>
             <h3>Hollywood & International Media</h3>
             <ol style="list-style: none;">
@@ -188,6 +195,32 @@
     <footer>
         <p>site made by <a href="https://www.v8v88v8v88.in/" target="_blank">V8V88V8V88</a> 🄯 2023</p>
     </footer>
+            <script>
+        function showContent(categoryId) {
+            const contentSections = document.querySelectorAll('.content-column section');
+            contentSections.forEach(section => {
+                if (section.id === categoryId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        const homeButton = document.getElementById('homeButton');
+        homeButton.addEventListener('click', function() {
+            const contentSections = document.querySelectorAll('.content-column section');
+            contentSections.forEach(section => {
+                section.style.display = 'block';
+            });
+        });
+
+        window.addEventListener('load', function() {
+            const contentSections = document.querySelectorAll('.content-column section');
+            contentSections.forEach(section => {
+                section.style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>
-
