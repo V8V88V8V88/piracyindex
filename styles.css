@@ -103,7 +103,7 @@ nav ul li a {
     background: rgba(78, 216, 163, 0.0);
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li a.active {
     background: rgba(78, 216, 163, 0.1);
     border: 1px solid rgba(78, 216, 163, 0.2);
     transform: translateX(5px);
@@ -153,11 +153,13 @@ nav ul li a i {
     transform: translateY(-50%);
     color: var(--accent-color);
     pointer-events: none;
+    z-index: 1;
 }
 
 .section {
     display: none;
     animation: fadeIn 0.5s ease;
+    margin-bottom: 2rem;
 }
 
 .section.active {
@@ -206,6 +208,9 @@ h2::after {
     border: 1px solid rgba(78, 216, 163, 0.1);
     position: relative;
     overflow: hidden;
+    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .card::before {
@@ -249,6 +254,10 @@ h2::after {
     background: rgba(78, 216, 163, 0.2);
     padding: 0 2px;
     border-radius: 2px;
+}
+
+#home-content .section h2:first-child {
+    display: none;
 }
 
 @media (max-width: 768px) {

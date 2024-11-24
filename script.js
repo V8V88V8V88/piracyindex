@@ -5,13 +5,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const menuItems = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('.section');
     const searchInput = document.getElementById('search');
+    const homeContent = document.getElementById('home-content');
 
     // Show all content in home section
     function showAllContent() {
+        homeContent.innerHTML = ''; // Clear existing content
         sections.forEach(section => {
-            if (section.id !== 'legal') {
-                const clone = section.cloneNode(true);
-                document.getElementById('home').appendChild(clone);
+            if (section.id !== 'home' && section.id !== 'legal') {
+                const sectionContent = section.cloneNode(true);
+                // Remove the section's title as it will be shown in the navigation
+                const title = sectionContent.querySelector('h2');
+                if (title) {
+                    title.remove();
+                }
+                homeContent.appendChild(sectionContent);
             }
         });
     }
@@ -22,50 +29,68 @@ document.addEventListener('DOMContentLoaded', (event) => {
             e.preventDefault();
             const targetId = item.getAttribute('data-section');
             
-            // Remove active class from all sections with fade out
+            menuItems.forEach(menuItem => {
+                menuItem.classList.remove('active');
+            });
+            item.classList.add('active');
+
             sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                    section.classList.remove('active');
-                    section.style.opacity = '';
-                    section.style.transform = '';
-                }, 300);
+                section.classList.remove('active');
             });
 
-            // Add active class to target section with fade in
-            setTimeout(() => {
-                if (targetId === 'home') {
-                    document.getElementById('home').innerHTML = ''; // Clear home section
-                    showAllContent(); // Show all content in home
-                }
+            if (targetId === 'home') {
+                showAllContent();
+                document.getElementById('home').classList.add('active');
+            } else {
                 document.getElementById(targetId).classList.add('active');
-            }, 300);
+            }
         });
     });
 
-    // Enhanced search functionality with highlighting
+    // Enhanced search functionality across all sections
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.card');
+        const allCards = document.querySelectorAll('.card');
+        let hasResults = false;
 
-        cards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
+        allCards.forEach(card => {
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
             
             if (title.includes(searchTerm) || description.includes(searchTerm)) {
                 card.style.display = 'block';
-                // Highlight matching text
+                hasResults = true;
                 if (searchTerm) {
                     highlightText(card, searchTerm);
                 } else {
-                    // Remove highlighting
                     removeHighlight(card);
                 }
             } else {
                 card.style.display = 'none';
             }
         });
+
+        // Show/hide sections based on whether they have visible cards
+        sections.forEach(section => {
+            if (section.id !== 'home' && section.id !== 'legal') {
+                const sectionCards = section.querySelectorAll('.card');
+                const hasVisibleCards = Array.from(sectionCards).some(card => card.style.display !== 'none');
+                
+                if (searchTerm && !hasVisibleCards) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            }
+        });
+
+        // Always show home section, but hide it if no results and not on home page
+        const homeSection = document.getElementById('home');
+        if (!hasResults && !homeSection.classList.contains('active')) {
+            homeSection.style.display = 'none';
+        } else {
+            homeSection.style.display = 'block';
+        }
     });
 
     // Text highlighting function
@@ -73,15 +98,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const title = element.querySelector('h3');
         const description = element.querySelector('p');
         
-        title.innerHTML = title.textContent.replace(
-            new RegExp(term, 'gi'),
-            match => `<span class="highlight">${match}</span>`
-        );
+        if (title) {
+            title.innerHTML = title.textContent.replace(
+                new RegExp(term, 'gi'),
+                match => `<span class="highlight">${match}</span>`
+            );
+        }
         
-        description.innerHTML = description.textContent.replace(
-            new RegExp(term, 'gi'),
-            match => `<span class="highlight">${match}</span>`
-        );
+        if (description) {
+            description.innerHTML = description.textContent.replace(
+                new RegExp(term, 'gi'),
+                match => `<span class="highlight">${match}</span>`
+            );
+        }
     }
 
     // Remove highlighting
@@ -89,8 +118,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const title = element.querySelector('h3');
         const description = element.querySelector('p');
         
-        title.innerHTML = title.textContent;
-        description.innerHTML = description.textContent;
+        if (title) title.innerHTML = title.textContent;
+        if (description) description.innerHTML = description.textContent;
     }
 
     // Mobile menu toggle with animation
@@ -104,7 +133,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         sidebar.classList.toggle('active');
         feather.replace({ 'stroke-width': 1.5, 'color': '#4ECCA3' });
         
-        // Animate menu icon
         const icon = menuToggle.querySelector('i');
         if (sidebar.classList.contains('active')) {
             icon.setAttribute('data-feather', 'x');
@@ -128,14 +156,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Initialize home page with all content
     showAllContent();
-
-    // Add smooth scroll behavior
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href'))?.scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+    document.getElementById('home').classList.add('active');
+    menuItems[0].classList.add('active');
 });
