@@ -43,48 +43,58 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const allCards = document.querySelectorAll('.card');
-        let hasResults = false;
 
-        allCards.forEach(card => {
-            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
-            
-            if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                card.style.display = 'block';
-                hasResults = true;
-                if (searchTerm) {
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    let hasResults = false;
+
+    sections.forEach(section => {
+        if (section.id !== 'home' && section.id !== 'legal') {
+            const cards = section.querySelectorAll('.card');
+            let sectionHasResults = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    sectionHasResults = true;
+                    hasResults = true;
                     highlightText(card, searchTerm);
                 } else {
+                    card.style.display = 'none';
                     removeHighlight(card);
                 }
+            });
+
+            if (searchTerm && !sectionHasResults) {
+                section.style.display = 'none';
             } else {
-                card.style.display = 'none';
+                section.style.display = 'block';
             }
-        });
-
-        sections.forEach(section => {
-            if (section.id !== 'home' && section.id !== 'legal') {
-                const sectionCards = section.querySelectorAll('.card');
-                const hasVisibleCards = Array.from(sectionCards).some(card => card.style.display !== 'none');
-                
-                if (searchTerm && !hasVisibleCards) {
-                    section.style.display = 'none';
-                } else {
-                    section.style.display = 'block';
-                }
-            }
-        });
-
-        const homeSection = document.getElementById('home');
-        if (!hasResults && !homeSection.classList.contains('active')) {
-            homeSection.style.display = 'none';
-        } else {
-            homeSection.style.display = 'block';
         }
     });
+
+    if (searchTerm) {
+        homeContent.innerHTML = '';
+        sections.forEach(section => {
+            if (section.id !== 'home' && section.id !== 'legal' && section.style.display !== 'none') {
+                const sectionContent = section.cloneNode(true);
+                homeContent.appendChild(sectionContent);
+            }
+        });
+    } else {
+        showAllContent();
+    }
+
+    const homeSection = document.getElementById('home');
+    if (!hasResults && searchTerm) {
+        homeSection.style.display = 'none';
+    } else {
+        homeSection.style.display = 'block';
+    }
+});
 
     function highlightText(element, term) {
         const title = element.querySelector('h3');
@@ -146,4 +156,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     showAllContent();
     document.getElementById('home').classList.add('active');
     menuItems[0].classList.add('active');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
 });
