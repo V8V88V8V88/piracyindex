@@ -1,313 +1,153 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Piracy Index 🏴‍☠️</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #deddda;
-            display: flex;
-            flex-wrap: wrap;
-            font-size: 18px;
-        }
-
-        .index-column {
-            width: 350px;
-            background-color: #131313;
-            padding: 20px;
-            box-sizing: border-box;
-            min-height: 100vh;
-            overflow-y: auto;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-        }
-
-        .content-column {
-            flex: 2;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            font-family: cursive;
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-left: 0;
-        }
-        ol {
-                text-align: left;
-            }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        a {
-            color: #57e389;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: #3ca374;
-        }
-
-        a:hover {
-            color: #1f7149;
-            text-decoration: underline;
-        }
-
-        .index-logo {
-            max-width: 85px;
-            display: block;
-            margin: 0 auto;
-        }
-            .content-column section {
-            display: none;
-        }
-
-        .hamburger-menu {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    font-size: 24px;
-    color: #57e389;
-}
-
-        @media (max-width: 767px) {
-            .index-column {
-                width: 100%;
-                padding: 20px;
-                min-height: auto;
-            }
-        }
-    </style>
+    <title>Digital Index</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-    <div class="index-column">
-        <header>
-            <h1>The Piracy Index 🏴‍☠️</h1>
-            <img src="index.gif" alt="Piracy Index Logo" class="index-logo">
-            <p><em>Ahoy gentlemen o' fortune!<br>Welcome to The Piracy Index v2 🏴‍☠️</em></p>
-        </header>
-
-        <nav>
-             <ul>
-                <li><a href="#" id="homeButton" onclick="showContent('')">Home</a></li>
-                <li><a href="#" onclick="showContent('torrent')">Torrent Sites</a></li>
-                <li><a href="#" onclick="showContent('media')">Movies & TV</a></li>
-                <li><a href="#" onclick="showContent('anime')">Anime Sites</a></li>
-                <li><a href="#" onclick="showContent('books')">Books Piracy</a></li>
-                <li><a href="#" onclick="showContent('games')">Games Sites</a></li>
-                <li><a href="#" onclick="showContent('legal')">Legal</a></li>
-            </ul>
-        </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Digital Index</h1>
+                <div class="logo">
+                    <div class="logo-inner"></div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" data-section="home"><i data-feather="home"></i>Home</a></li>
+                    <li><a href="#" data-section="torrent"><i data-feather="download"></i>Torrent Sites</a></li>
+                    <li><a href="#" data-section="media"><i data-feather="film"></i>Movies & TV</a></li>
+                    <li><a href="#" data-section="anime"><i data-feather="tv"></i>Anime Sites</a></li>
+                    <li><a href="#" data-section="books"><i data-feather="book"></i>Books Piracy</a></li>
+                    <li><a href="#" data-section="games"><i data-feather="gamepad"></i>Games Sites</a></li>
+                    <li><a href="#" data-section="legal"><i data-feather="alert-triangle"></i>Legal</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="content">
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search resources...">
+                <i data-feather="search"></i>
+            </div>
+            <div id="home" class="section active">
+                <h2>Welcome to Digital Index</h2>
+                <p>Explore our curated collection of digital resources across various categories.</p>
+            </div>
+            <div id="torrent" class="section">
+                <h2>Torrent Sites</h2>
+                <div class="grid">
+                    <a href="https://torrentkingnow.pro/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Torrentking</h3>
+                        <p>A popular torrent indexing site with a wide variety of content.</p>
+                    </a>
+                    <a href="https://torrent-cue.co/index" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>TorrentCue</h3>
+                        <p>Curated torrent listings for various media types.</p>
+                    </a>
+                    <a href="https://www.1337x.to/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>1337x</h3>
+                        <p>One of the most popular torrent sites with a clean interface.</p>
+                    </a>
+                    <a href="https://rargb.to/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>RARBG</h3>
+                        <p>Known for high-quality video torrents and a user-friendly interface.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="media" class="section">
+                <h2>Movies & TV Streaming</h2>
+                <div class="grid">
+                    <a href="https://movie-web.app/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>movie-web.app</h3>
+                        <p>A sleek, modern streaming platform for movies and TV shows.</p>
+                    </a>
+                    <a href="https://fmoviesz.to/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>fmoviesz.to</h3>
+                        <p>Large collection of movies and TV series for streaming.</p>
+                    </a>
+                    <a href="https://hdtoday.tv" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>HDToday</h3>
+                        <p>High-definition streaming for latest movies and TV shows.</p>
+                    </a>
+                    <a href="https://www.braflix.app/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Braflix</h3>
+                        <p>User-friendly streaming app with a vast library of content.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="anime" class="section">
+                <h2>Anime Sites</h2>
+                <div class="grid">
+                    <a href="https://animeland.us/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Animeland</h3>
+                        <p>A popular site for streaming subbed and dubbed anime.</p>
+                    </a>
+                    <a href="https://gogoanime.is/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Gogoanime</h3>
+                        <p>Extensive library of anime series and movies.</p>
+                    </a>
+                    <a href="https://aniwatch.to/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Aniwatch</h3>
+                        <p>Ad-free anime streaming platform with a clean interface.</p>
+                    </a>
+                    <a href="https://animepahe.ru/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>AnimePahe</h3>
+                        <p>Known for high-quality, low file size anime downloads and streams.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="books" class="section">
+                <h2>Books Piracy</h2>
+                <div class="grid">
+                    <a href="http://libgen.is/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Library Genesis</h3>
+                        <p>Massive digital library for books, articles, and academic papers.</p>
+                    </a>
+                    <a href="https://z-lib.org/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Z-Library</h3>
+                        <p>One of the world's largest e-book libraries.</p>
+                    </a>
+                    <a href="https://www.gutenberg.org/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Project Gutenberg</h3>
+                        <p>Free library of over 60,000 free eBooks.</p>
+                    </a>
+                    <a href="https://sci-hub.se/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Sci-Hub</h3>
+                        <p>Access to millions of research papers and articles.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="games" class="section">
+                <h2>Games Sites</h2>
+                <div class="grid">
+                    <a href="https://fitgirl-repacks.site/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>FitGirl Repacks</h3>
+                        <p>Popular for highly compressed game repacks.</p>
+                    </a>
+                    <a href="https://steamunlocked.net/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Steam Unlocked</h3>
+                        <p>Free Steam games available for direct download.</p>
+                    </a>
+                    <a href="https://gog-games.com/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>GOG Games</h3>
+                        <p>DRM-free games from GOG available for download.</p>
+                    </a>
+                    <a href="https://www.skidrowreloaded.com/" class="card" target="_blank" rel="noopener noreferrer">
+                        <h3>Skidrow & Reloaded</h3>
+                        <p>Aggregator for various cracked PC games.</p>
+                    </a>
+                </div>
+            </div>
+            <div id="legal" class="section">
+                <h2>Disclaimer</h2>
+                <p>All the information on this website is purely for informational purposes and is not intended to support copyright infringement. We are not responsible for and in no way associated with any external links or their content. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
+            </div>
+        </main>
     </div>
-
-    <div class="content-column">
-        <button class="hamburger-menu" onclick="toggleSidebar()">☰</button>
-        <section id="torrent">
-            <h2>Torrent Sites</h2>
-            <ol style="list-style: none;">
-                <li><a href="https://torrentkingnow.pro/" target="_blank">Torrentking</a></li>
-                <li><a href="https://torrent-cue.co/index" target="_blank">TorrentCue</a></li>
-                <li><a href="https://watchsomuch.tv/" target="_blank">WatchSoMuch</a></li>
-                <li><a href="https://www.kickasstorrents.pw/" target="_blank">KickassTorrents</a></li>
-                <li><a href="https://www.1337x.to/" target="_blank">1337x</a></li>
-                <li><a href="https://rargb.to/" target="_blank">RARBG</a></li>
-                <li><a href="https://yts.autos/" target="_blank">YIFY</a></li>
-                <li><a href="https://psa.wf/" target="_blank">psa</a></li>
-                <li><a href="https://extratorrents.it/home" target="_blank">Extratorrents</a></li>
-                <li><a href="https://lx.vern.cc/" target="_blank">LibreX</a></li>
-                <li><a href="https://unblockit.pages.dev/" target="_blank">Unblockit</a></li>
-            </ol>
-        </section>
-
-        <section id="media">
-            <h2>Streaming Sites</h2>
-            <h3>Hollywood & International Sites</h3>
-            <ol style="list-style: none;">
-                <li><a href="https://watch.lonelil.com/" target="_blank">watch.lonelil.com</a></li>
-                <li><a href="https://ww2.soap2dayhd.co/" target="_blank">soap2dayhd.co</a></li>
-                <li><a href="https://hdtoday.tv" target="_blank">hdtoday.tv</a></li>
-                <li><a href="https://www.braflix.app/" target="_blank">braflix.app</a></li>
-                <li><a href="https://cinehub.wtf/" target="_blank">cinehub.wtf</a></li>
-                <li><a href="https://fmoviesz.to/" target="_blank">fmoviesz.to</a></li>
-                <li><a href="https://flixhq.click/home/" target="_blank">flixhq.cick</a></li>
-                <li><a href="https://movie-web.app/" target="_blank">movie-web.app</a></li>
-                <li><a href="https://themoviearchive.site/" target="_blank">themoviearchive.site</a></li>
-                <li><a href="https://tma.lol/" target="_blank">tma.lol</a></li>
-                <li><a href="https://primeflix-web.vercel.app/" target="_blank">primeflix-web</a></li>
-                <li><a href="https://tma.lol/" target="_blank">tma.lol</a></li>
-                <li><a href="https://tma.lol/" target="_blank">tma.lol</a></li>
-                <li><a href="https://hdtoday.tv" target="_blank">hdtoday.tv</a></li>
-                <li><a href="https://goku.sx/home/" target="_blank">goku.sx</a></li>
-                <li><a href="https://bflix.sx" target="_blank">bflix.sx</a></li>
-                <li><a href="https://ask4movie.li/" target="_blank">ask4</a></li>
-                <li><a href="https://openloadmov.com/" target="_blank">openloadmov.com</a></li>
-                <li><a href="https://www.mov.onl/" target="_blank">mov.onl</a></li>
-                <li><a href="https://flixtor2.to/" target="_blank">flixtor2.to</a></li>
-                <li><a href="https://trailers.to/" target="_blank">trailers.to</a></li>
-                <li><a href="https://www.freetubespot.com/" target="_blank">freetubespot.com</a></li>
-                <li><a href="https://netflixery.com/" target="_blank">netflixery.com</a></li>
-                <li><a href="https://spacemov.site/" target="_blank">spacemov.site</a></li>
-                <li><a href="https://www1.bflix.top/" target="_blank">bflix.top</a></li>
-                <li><a href="https://www.justwatch.com/" target="_blank">justwatch.com</a></li>
-                <li><a href="https://stream.vidzstore.com/" target="_blank">vidzstore.com</a></li>
-                <li><a href="https://filmsclub.org/" target="_blank">filmsclub.org</a></li>
-                <li><a href="https://bingewatch.to/home" target="_blank">bingewatch.to</a></li>
-                <li><a href="https://ling-online.net/en/videos/films/" target="_blank">ling-online.net</a></li>
-                <li><a href="https://cataz.net/" target="_blank">cataz.net</a></li>
-                <li><a href="https://sockshare.ac/" target="_blank">sockshare.ac</a></li>
-                <li><a href="https://fsharetv.io/" target="_blank">fsharetv.io</a></li>
-                <li><a href="https://m4ufree.vip/" target="_blank">m4ufree.vip</a></li>
-                <li><a href="https://ww7.putlocker.vip/" target="_blank">putlocker.vip</a></li>
-                <li><a href="https://c1ne.co/" target="_blank">c1ne.co</a></li>
-                <li><a href="http://www.streamlord.com/" target="_blank">streamlord.com</a></li>
-                <li><a href="https://pressplay.top/" target="_blank">pressplay.top</a></li>
-                <li><a href="https://tubitv.com/" target="_blank">tubitv.com</a></li>
-                <li><a href="https://kissasian.lu/" target="_blank">kissasian.lu</a></li>
-                <li><a href="https://kisskh.co/" target="_blank">kisskh.ce</a></li>
-                <li><a href="https://dramacool.hr/" target="_blank">dramacool.hr</a></li>
-            </ol>
-            <h3>Bollywood / Indian Media</h3>
-            <ol style="list-style: none;">
-                <li><a href="https://banglaplex.fun/" target="_blank">banglaplex.fun</a></li>
-                <li><a href="https://dailyiflix.com/" target="_blank">dailyiflix</a></li>
-                <li><a href="https://111.90.159.159/" target="_blank">111.90.159.159/</a></li>
-                <li><a href="https://fsharetv.io/filter?genre=&country=India&year=&sort_by=&sub=&year_range=" target="_blank">fsharetv.io</a></li>
-                <li><a href="https://pressplay.top/country/india/" target="_blank">pressplay.top</a></li>
-            </ol>
-            <h3>Direct Downloads</h3>
-            <ol style="list-style: none;">
-                <li><a href="https://ddlbase.net/" target="_blank">ddlbase.net</a></li>
-                <li><a href="https://vadapav.mov/" target="_blank">vadapav.mov/a></li>
-                <li><a href="http://173.249.48.243/movies2/" target="_blank">173.249.48.243</a></li>
-                <li><a href="https://vegamovies.ngo/" target="_blank">vegamovies.ngo</a></li>
-            </ol>
-            <h3>Cartoons</h3>
-            <ol style="list-style: none;">
-                <li><a href="https://kimcartoon.li/" target="_blank">kimcartoons.li</a></li>
-                <li><a href="https://www.wcofun.net" target="_blank">wcofun</a></li>
-            </ol>
-            </section>
-            <section id="anime">
-             <h3>Anime</h3>
-            <ol style="list-style: none;">
-                <li><a href="https://animeland.us/" target="_blank">animeland.us</a></li>
-                <li><a href="https://gogoanime.is/" target="_blank">gogoanime.is</a></li>
-                <li><a href="https://allanime.to/" target="_blank">allanime.to</a></li>
-                <li><a href="https://crunchyroll.com/" target="_blank">crunchyroll.com</a></li>
-                <li><a href="https://aniwatch.to/" target="_blank">aniwatch.to</a></li>
-                <li><a href="https://everythingmoe.com/" target="_blank">everythingmoe.com</a></li>
-                <li><a href="https://anix.to/" target="_blank">anix.to</a></li>
-                <li><a href="https://yugenanime.tv/" target="_blank">yugenanime.tv</a></li>
-                <li><a href="https://animepahe.ru/" target="_blank">animepahe.ru</a></li>
-                <li><a href="https://aniwave.to/" target="_blank">aniwave.to</a></li>
-            </ol>
-        </section>
-
-        <section id="books">
-            <h2>Books Piracy Index</h2>
-            <ol style="list-style: none;">
-                <li><a href="http://gen.lib.rus.ec/" target="_blank">Library Genesis (Main Site)</a></li>
-                <li><a href="http://libgen.is/" target="_blank">Libgen</a></li>
-                <li><a href="https://archive.org/details/texts" target="_blank">Archives</a></li>
-                <li><a href="https://www.academia.edu/" target="_blank">academia.edu (account required) </a></li>
-                <li><a href="http://www.anticariat-esoteric.ro/" target="_blank">anticariat-esoteric.ro</a></li>
-                <li><a href="https://anticariat--esoteric-ro.translate.goog/?_x_tr_sch=http&_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-GB" target="_blank">anticariat-esoteric site (translated by google) </a></li>
-                <li><a href="https://en.booksee.org/" target="_blank">booksee.org</a></li>
-                <li><a href="https://pdfdrive.com" target="_blank">pdfdrive.com</a></li>
-                <li><a href="https://www.globalgreyebooks.com/" target="_blank">globalgreybooks.ccom</a></li>
-                <li><a href="https://golden-dawn.com/eu/library.aspx" target="_blank">golden-dawn library</a></li>
-                <li><a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a></li>
-                <li><a href="https://ivypanda.com/blog/1000-open-textbooks-and-learning-resources-for-all-subjects/" target="_blank">ivypanda.com blog (1000+ open textbooks resources) </a></li>
-                <li><a href="https://openstax.org/" target="_blank">OpenStax.org (free tech books)</a></li>
-                <li><a href="https://the-eye.eu/public/Books/" target="_blank">the-eye.eu (books) </a></li>
-                <li><a href="https://www.llresearch.org/" target="_blank">llresearch.org (Spiritual Books) </a></li>
-                <li><a href="https://idoc.tips/" target="_blank">idoc.tips (all kinds of books) </a></li>
-                <li><a href="https://archive.sacred-texts.com/" target="_blank">Internet Sacred Text Archive</a></li>
-                <li><a href="https://vdocuments.mx/" target="_blank">vdocuments.mx </a></li>
-            </ol>
-        </section>
-        <section id="games">
-            <h2>Games Piracy</h2>
-            <ol style="list-style: none;">
-                <li><a href="https://gog-games.to/" target="_blank">GOG Games</a></li>
-                <li><a href="https://dodi-repacks.site/" target="_blank">Dodi Repacks</a></li>
-                <li><a href="https://fitgirl-repacks.site//" target="_blank">FitGirl Repacks</a></li>
-                <li><a href="https://freegogpcgames.com/" target="_blank">Free GOG PC Games</a></li>
-                <li><a href="https://www.seven-gamers.com/" target="_blank">Seven Gamers</a></li>
-                <li><a href="https://steamrip.com/" target="_blank">Streamrip</a></li>
-                <li><a href="https://g4u.to/" target="_blank">Games 4 U</a></li>
-                <li><a href="https://gamedrive.org" target="_blank">Game Drive</a></li>
-            </ol>
-        </section>
-        <section id="legal">
-            <h2>Disclaimer</h2>
-            <br>
-All the information on this website is purely for informational purposes and is not intended to support copyright infringement. I am not responsible for and in no way associated to any external links or their content. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them. I have no control over the nature, content and availability of other websites. If you dislike the information this website provides then please contact the corresponding website's owner/webmaster/hoster directly and fill a DMCA takedown request.
-            </section>
-    </div>
-
-    <footer>
-        <p>site made by <a href="https://www.v8v88v8v88.in/" target="_blank">V8V88V8V88</a> 🄯 2023</p>
-    </footer>
-    <script>
-        function toggleSidebar() {
-            const indexColumn = document.querySelector('.index-column');
-            indexColumn.style.display = indexColumn.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function showContent(categoryId) {
-            const contentSections = document.querySelectorAll('.content-column section');
-            contentSections.forEach(section => {
-                if (section.id === categoryId) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
-            });
-        }
-
-        const homeButton = document.getElementById('homeButton');
-        homeButton.addEventListener('click', function() {
-            const contentSections = document.querySelectorAll('.content-column section');
-            contentSections.forEach(section => {
-                section.style.display = 'block';
-            });
-        });
-
-        window.addEventListener('load', function() {
-            const contentSections = document.querySelectorAll('.content-column section');
-            contentSections.forEach(section => {
-                section.style.display = 'block';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
