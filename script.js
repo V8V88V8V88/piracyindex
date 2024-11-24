@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Initialize Feather icons with custom stroke width
     feather.replace({ 'stroke-width': 1.5, 'color': '#4ECCA3' });
 
     const menuItems = document.querySelectorAll('nav ul li a');
@@ -7,13 +6,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const searchInput = document.getElementById('search');
     const homeContent = document.getElementById('home-content');
 
-    // Show all content in home section
     function showAllContent() {
-        homeContent.innerHTML = ''; // Clear existing content
+        homeContent.innerHTML = '';
         sections.forEach(section => {
             if (section.id !== 'home' && section.id !== 'legal') {
                 const sectionContent = section.cloneNode(true);
-                // Remove the section's title as it will be shown in the navigation
                 const title = sectionContent.querySelector('h2');
                 if (title) {
                     title.remove();
@@ -23,7 +20,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-    // Navigation with smooth transitions
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
@@ -47,7 +43,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    // Enhanced search functionality across all sections
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const allCards = document.querySelectorAll('.card');
@@ -70,7 +65,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
 
-        // Show/hide sections based on whether they have visible cards
         sections.forEach(section => {
             if (section.id !== 'home' && section.id !== 'legal') {
                 const sectionCards = section.querySelectorAll('.card');
@@ -84,7 +78,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
 
-        // Always show home section, but hide it if no results and not on home page
         const homeSection = document.getElementById('home');
         if (!hasResults && !homeSection.classList.contains('active')) {
             homeSection.style.display = 'none';
@@ -93,7 +86,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    // Text highlighting function
     function highlightText(element, term) {
         const title = element.querySelector('h3');
         const description = element.querySelector('p');
@@ -113,7 +105,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-    // Remove highlighting
     function removeHighlight(element) {
         const title = element.querySelector('h3');
         const description = element.querySelector('p');
@@ -122,7 +113,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (description) description.innerHTML = description.textContent;
     }
 
-    // Mobile menu toggle with animation
     const sidebar = document.querySelector('.sidebar');
     const menuToggle = document.createElement('button');
     menuToggle.classList.add('menu-toggle');
@@ -142,7 +132,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         feather.replace({ 'stroke-width': 1.5, 'color': '#4ECCA3' });
     });
 
-    // Close sidebar when clicking outside on mobile
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768 && 
             !sidebar.contains(e.target) && 
@@ -154,7 +143,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    // Initialize home page with all content
     showAllContent();
     document.getElementById('home').classList.add('active');
     menuItems[0].classList.add('active');
