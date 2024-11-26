@@ -127,9 +127,14 @@ nav ul li a i {
     align-items: center;
 }
 
+.search-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
 #search {
     width: 100%;
-    padding: 1rem 1rem 1rem 3rem; /* Adjusted padding to accommodate the icon */
+    padding: 1rem 3rem;
     border: 1px solid rgba(78, 216, 163, 0.2);
     border-radius: 0.5rem;
     background-color: rgba(13, 20, 23, 0.7);
@@ -138,6 +143,7 @@ nav ul li a i {
     transition: all 0.3s ease;
 }
 
+/* Update the search icon positioning */
 .search-container i {
     position: absolute;
     left: 1rem;
@@ -146,9 +152,10 @@ nav ul li a i {
     color: var(--accent-color);
     pointer-events: none;
     z-index: 1;
-    width: 18px; /* Explicit width */
-    height: 18px; /* Explicit height */
+    width: 20px;
+    height: 20px;
 }
+
 
 #search:focus {
     outline: none;
@@ -159,7 +166,6 @@ nav ul li a i {
 #search::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
-
 
 .section {
     display: none;

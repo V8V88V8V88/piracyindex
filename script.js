@@ -15,10 +15,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 if (title) {
                     title.remove();
                 }
-                homeContent.appendChild(sectionContent);
+            homeContent.appendChild(sectionContent);
             }
         });
     }
+
+    showAllContent();
+    document.getElementById('home').classList.add('active');
+    menuItems[0].classList.add('active');
 
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -43,58 +47,57 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        let hasResults = false;
 
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    let hasResults = false;
-
-    sections.forEach(section => {
-        if (section.id !== 'home' && section.id !== 'legal') {
-            const cards = section.querySelectorAll('.card');
-            let sectionHasResults = false;
-
-            cards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    sectionHasResults = true;
-                    hasResults = true;
-                    highlightText(card, searchTerm);
-                } else {
-                    card.style.display = 'none';
-                    removeHighlight(card);
-                }
-            });
-
-            if (searchTerm && !sectionHasResults) {
-                section.style.display = 'none';
-            } else {
-                section.style.display = 'block';
-            }
-        }
-    });
-
-    if (searchTerm) {
-        homeContent.innerHTML = '';
         sections.forEach(section => {
-            if (section.id !== 'home' && section.id !== 'legal' && section.style.display !== 'none') {
-                const sectionContent = section.cloneNode(true);
-                homeContent.appendChild(sectionContent);
+            if (section.id !== 'home' && section.id !== 'legal') {
+                const cards = section.querySelectorAll('.card');
+                let sectionHasResults = false;
+
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        sectionHasResults = true;
+                        hasResults = true;
+                        highlightText(card, searchTerm);
+                    } else {
+                        card.style.display = 'none';
+                        removeHighlight(card);
+                    }
+                });
+
+                if (searchTerm && !sectionHasResults) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
             }
         });
-    } else {
-        showAllContent();
-    }
 
-    const homeSection = document.getElementById('home');
-    if (!hasResults && searchTerm) {
-        homeSection.style.display = 'none';
-    } else {
-        homeSection.style.display = 'block';
-    }
-});
+        if (searchTerm) {
+            homeContent.innerHTML = '';
+            sections.forEach(section => {
+                if (section.id !== 'home' && section.id !== 'legal' && section.style.display !== 'none') {
+                    const sectionContent = section.cloneNode(true);
+                    homeContent.appendChild(sectionContent);
+                }
+            });
+        } else {
+            showAllContent();
+        }
+
+        const homeSection = document.getElementById('home');
+        if (!hasResults && searchTerm) {
+            homeSection.style.display = 'none';
+        } else {
+            homeSection.style.display = 'block';
+        }
+    });
 
     function highlightText(element, term) {
         const title = element.querySelector('h3');
@@ -152,12 +155,10 @@ searchInput.addEventListener('input', (e) => {
             feather.replace({ 'stroke-width': 1.5, 'color': '#4ECCA3' });
         }
     });
-
     showAllContent();
-    document.getElementById('home').classList.add('active');
-    menuItems[0].classList.add('active');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     feather.replace();
 });
+
