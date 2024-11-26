@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const homeContent = document.getElementById('home-content');
 
     function showAllContent() {
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.display = 'block';
+        });
+
+        sections.forEach(section => {
+            if (section.id !== 'legal') {
+                section.style.display = 'block';
+            }
+        });
+
         homeContent.innerHTML = '';
         sections.forEach(section => {
             if (section.id !== 'home' && section.id !== 'legal') {
@@ -15,9 +25,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 if (title) {
                     title.remove();
                 }
-            homeContent.appendChild(sectionContent);
+                homeContent.appendChild(sectionContent);
             }
         });
+
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+            homeSection.style.display = 'block';
+            homeSection.classList.add('active');
+        }
     }
 
     showAllContent();
@@ -27,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     menuItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = item.getAttribute('data-section');
+            const targetId = item.getAttribute('href').substring(1);
             
             menuItems.forEach(menuItem => {
                 menuItem.classList.remove('active');
@@ -48,8 +64,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+        const searchTerm = e.target.value.toLowerCase().trim();
         let hasResults = false;
+
+        if (!searchTerm) {
+            showAllContent();
+            return;
+        }
 
         sections.forEach(section => {
             if (section.id !== 'home' && section.id !== 'legal') {
@@ -57,9 +78,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 let sectionHasResults = false;
 
                 cards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const description = card.querySelector('p').textContent.toLowerCase();
-                
+                    const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                    const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+                    
                     if (title.includes(searchTerm) || description.includes(searchTerm)) {
                         card.style.display = 'block';
                         sectionHasResults = true;
@@ -71,32 +92,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     }
                 });
 
-                if (searchTerm && !sectionHasResults) {
-                    section.style.display = 'none';
-                } else {
-                    section.style.display = 'block';
-                }
+                section.style.display = sectionHasResults ? 'block' : 'none';
             }
         });
 
-        if (searchTerm) {
-            homeContent.innerHTML = '';
-            sections.forEach(section => {
-                if (section.id !== 'home' && section.id !== 'legal' && section.style.display !== 'none') {
-                    const sectionContent = section.cloneNode(true);
-                    homeContent.appendChild(sectionContent);
-                }
-            });
-        } else {
-            showAllContent();
-        }
+        homeContent.innerHTML = '';
+        sections.forEach(section => {
+            if (section.id !== 'home' && section.id !== 'legal' && section.style.display !== 'none') {
+                const sectionContent = section.cloneNode(true);
+                homeContent.appendChild(sectionContent);
+            }
+        });
 
         const homeSection = document.getElementById('home');
-        if (!hasResults && searchTerm) {
-            homeSection.style.display = 'none';
-        } else {
-            homeSection.style.display = 'block';
-        }
+        homeSection.style.display = hasResults || !searchTerm ? 'block' : 'none';
     });
 
     function highlightText(element, term) {
@@ -155,7 +164,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             feather.replace({ 'stroke-width': 1.5, 'color': '#4ECCA3' });
         }
     });
-    showAllContent();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

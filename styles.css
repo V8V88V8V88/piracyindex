@@ -127,14 +127,10 @@ nav ul li a i {
     align-items: center;
 }
 
-.search-container {
-    position: relative;
-    margin-bottom: 2rem;
-}
 
 #search {
     width: 100%;
-    padding: 1rem 3rem;
+    padding: 1rem 1rem 1rem 2.8rem; /* Adjusted left padding to accommodate icon */
     border: 1px solid rgba(78, 216, 163, 0.2);
     border-radius: 0.5rem;
     background-color: rgba(13, 20, 23, 0.7);
@@ -142,20 +138,6 @@ nav ul li a i {
     font-size: 1rem;
     transition: all 0.3s ease;
 }
-
-/* Update the search icon positioning */
-.search-container i {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent-color);
-    pointer-events: none;
-    z-index: 1;
-    width: 20px;
-    height: 20px;
-}
-
 
 #search:focus {
     outline: none;
@@ -165,6 +147,18 @@ nav ul li a i {
 
 #search::placeholder {
     color: rgba(255, 255, 255, 0.4);
+}
+
+.search-container i {
+    position: absolute;
+    left: 0.8rem; /* Adjusted position */
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    pointer-events: none;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
 }
 
 .section {
@@ -220,8 +214,6 @@ h2::after {
     position: relative;
     overflow: hidden;
     display: block;
-    visibility: visible;
-    opacity: 1;
 }
 
 .card::before {
@@ -311,3 +303,4 @@ h2::after {
         border-color: var(--accent-color);
     }
 }
+
