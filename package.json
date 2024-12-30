@@ -1,0 +1,21 @@
+{
+  "name": "piracyindex",
+  "version": "1.0.0",
+  "description": "index of all the greatest sites on internet :)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "next": "^15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17",
+    "ui": "github:shadcn/ui"
+  }
+}
