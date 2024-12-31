@@ -36,3 +36,4 @@ export function ResourceCard({ title, description }: ResourceCardProps) {
     </Card>
   )
 }
+

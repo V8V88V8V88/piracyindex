@@ -8,7 +8,7 @@ import { MobileMenu } from '@/components/mobile-menu'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Piracy Index',
+  title: 'Digital Index',
   description: 'Your curated collection of digital resources',
 }
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="dark">
       <body className={cn(
         GeistSans.className,
-        "min-h-screen bg-background antialiased"
+        "min-h-screen bg-[#0f1419] antialiased"
       )}>
         <ThemeProvider
           attribute="class"

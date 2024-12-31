@@ -56,7 +56,7 @@ export default function Home() {
 
   const renderResourceSection = (title, resources) => (
     <section className="mb-8">
-      <h2 className="text-2xl font-semibold text-teal-500 mb-4">{title}</h2>
+      <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {filterResources(resources).map((resource, index) => (
           <ResourceCard
@@ -83,7 +83,7 @@ export default function Home() {
 
       {category === 'home' && (
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-teal-500 mb-3">Welcome to Digital Index</h1>
+          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Digital Index</h1>
           <p className="text-muted-foreground">
             Explore our curated collection of digital resources across various categories.
           </p>
@@ -98,7 +98,7 @@ export default function Home() {
 
       {category === 'legal' && (
         <div>
-          <h2 className="text-2xl font-semibold text-teal-500 mb-4">Legal Information</h2>
+          <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">Legal Information</h2>
           <p className="text-muted-foreground">
             This section provides information about copyright laws and legal alternatives to piracy.
             Remember that downloading copyrighted material without permission may be illegal in your country.
@@ -108,3 +108,4 @@ export default function Home() {
     </div>
   )
 }
+
