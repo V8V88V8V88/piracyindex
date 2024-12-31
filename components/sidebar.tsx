@@ -19,12 +19,12 @@ export function Sidebar() {
   ]
 
   return (
-    <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-[#0b0d10] backdrop-blur supports-[backdrop-filter]:bg-[#0b0d10]">
       <div className="flex items-center gap-2 mb-8">
         <div className="w-8 h-8 rounded-full bg-[#00FFA3]/20 flex items-center justify-center">
           <div className="w-3 h-3 rounded-full bg-[#00FFA3] animate-pulse" />
         </div>
-        <h1 className="text-xl font-semibold text-[#00FFA3]">Digital Index</h1>
+        <h1 className="text-xl font-semibold text-[#00FFA3]">Piracy Index</h1>
       </div>
       
       <nav className="space-y-2">
@@ -48,4 +48,3 @@ export function Sidebar() {
     </div>
   )
 }
-
