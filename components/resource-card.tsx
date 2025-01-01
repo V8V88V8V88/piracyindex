@@ -13,20 +13,23 @@ interface ResourceCardProps {
 export function ResourceCard({ title, description }: ResourceCardProps) {
   return (
     <Card className="
-      bg-background/95 backdrop-blur 
-      supports-[backdrop-filter]:bg-background/60 
-      hover:bg-accent/50 transition-all duration-300 
-      cursor-pointer border-2 border-border/40 
-      hover:border-teal-500/50 group relative overflow-hidden 
+      group relative overflow-hidden
+      bg-[#0f1419]/80 backdrop-blur 
+      supports-[backdrop-filter]:bg-[#0f1419]/60 
+      border-2 border-[#1a2634] 
+      hover:border-[#00FFA3]/50
+      hover:bg-[#1a2634]/80
+      transition-all duration-300 
+      cursor-pointer 
       hover:scale-105
     ">
       <div className="
         absolute inset-0 -translate-x-full 
-        bg-gradient-to-r from-transparent via-teal-500/10 to-transparent
+        bg-gradient-to-r from-transparent via-[#00FFA3]/10 to-transparent
         group-hover:translate-x-full transition-transform duration-700
       "></div>
       <CardHeader>
-        <CardTitle className="text-foreground opacity-90 group-hover:opacity-100 transition-opacity text-lg">
+        <CardTitle className="text-foreground/90 group-hover:text-foreground transition-colors text-lg">
           {title}
         </CardTitle>
         <CardDescription className="opacity-75 group-hover:opacity-100 transition-opacity text-sm">
