@@ -54,6 +54,14 @@ export default function Home() {
     { title: "CroHasIt", description: "Game cracks and updates repository." },
   ]
 
+  const allResources = {
+    'anime': animeResources,
+    'torrent': torrentResources,
+    'movies-tv': moviesTVResources,
+    'books': bookResources,
+    'games': gameResources,
+  }
+
   const renderResourceSection = (title, resources) => (
     <section className="mb-8">
       <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
@@ -68,6 +76,17 @@ export default function Home() {
       </div>
     </section>
   )
+
+  const getCategoryTitle = (category) => {
+    switch(category) {
+      case 'torrent': return "Torrent Sites";
+      case 'movies-tv': return "Movies & TV Streaming";
+      case 'anime': return "Anime Sites";
+      case 'books': return "Books Piracy";
+      case 'games': return "Games";
+      default: return "All Resources";
+    }
+  }
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
@@ -90,20 +109,22 @@ export default function Home() {
         </div>
       )}
 
-      {(category === 'home' || category === 'torrent') && renderResourceSection("Torrent Sites", torrentResources)}
-      {(category === 'home' || category === 'movies-tv') && renderResourceSection("Movies & TV Streaming", moviesTVResources)}
-      {(category === 'home' || category === 'anime') && renderResourceSection("Anime Sites", animeResources)}
-      {(category === 'home' || category === 'books') && renderResourceSection("Books Piracy", bookResources)}
-      {(category === 'home' || category === 'games') && renderResourceSection("Games", gameResources)}
-
-      {category === 'legal' && (
-        <div>
-          <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">Legal Information</h2>
-          <p className="text-muted-foreground">
-            This section provides information about copyright laws and legal alternatives to piracy.
-            Remember that downloading copyrighted material without permission may be illegal in your country.
-          </p>
-        </div>
+      {category === 'home' ? (
+        Object.entries(allResources).map(([key, resources]) => 
+          renderResourceSection(getCategoryTitle(key), resources)
+        )
+      ) : (
+        category === 'legal' ? (
+          <div>
+            <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">Legal Information</h2>
+            <p className="text-muted-foreground">
+              This section provides information about copyright laws and legal alternatives to piracy.
+              Remember that downloading copyrighted material without permission may be illegal in your country.
+            </p>
+          </div>
+        ) : (
+          renderResourceSection(getCategoryTitle(category), allResources[category] || [])
+        )
       )}
     </div>
   )
