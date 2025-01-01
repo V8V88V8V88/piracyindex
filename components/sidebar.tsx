@@ -34,7 +34,7 @@ export function Sidebar() {
  className={cn(
    "flex items-center gap-3 px-3 py-2 transition-colors rounded-lg w-full text-left",
    category === item.category
-     ? "text-[#00FFA3] bg-accent"
+     ? "text-[#00FFA3] bg-[#0b0d10]"
      : "text-muted-foreground hover:text-[#00FFA3] hover:bg-accent"
  )}
  onClick={() => setCategory(item.category as any)}
