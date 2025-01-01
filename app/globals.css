@@ -4,57 +4,95 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --background: 215 27% 8%;  /* #0f1419 */
+    --foreground: 0 0% 100%;
+    --card: 215 27% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 215 27% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 156 100% 50%;  /* #00FFA3 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 27% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 215 27% 12%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 156 100% 50%;  /* #00FFA3 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 27% 15%;
+    --input: 215 27% 15%;
+    --ring: 156 100% 50%;
     --radius: 0.5rem;
   }
- 
-  .dark {
-    --background: 200 30% 8%; /* Dark teal background #0f1419 */
-    --foreground: 210 40% 98%;
-    --card: 200 30% 10%;
-    --card-foreground: 210 40% 98%;
-    --popover: 200 30% 10%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 160 100% 50%; /* Bright teal #00FFA3 */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 200 30% 12%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 200 30% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 160 100% 50%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 200 30% 12%;
-    --input: 200 30% 12%;
-    --ring: 160 100% 50%;
-  }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+  
+  html {
+    @apply bg-[#0f1419];
   }
+  
+  body {
+    @apply bg-[#0f1419] text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #0f1419;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #00FFA3;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #1a1f25;
+  }
+}
+
+/* Custom styles for cards and sections */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-105;
+  background: rgba(26, 31, 37, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 163, 0.1);
+}
+
+.card-hover:hover {
+  border-color: rgba(0, 255, 163, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 163, 0.1);
+}
+
+.section-title {
+  @apply text-[#00FFA3] font-semibold;
+}
+
+.nav-item {
+  @apply transition-colors duration-200;
+}
+
+.nav-item:hover {
+  @apply text-[#00FFA3];
+  background: rgba(0, 255, 163, 0.1);
+}
+
+.nav-item.active {
+  @apply text-[#00FFA3];
+  background: rgba(0, 255, 163, 0.15);
+}
+
+.search-input {
+  background: rgba(26, 31, 37, 0.6);
+  border: 1px solid rgba(0, 255, 163, 0.1);
+}
+
+.search-input:focus {
+  border-color: rgba(0, 255, 163, 0.3);
+  box-shadow: 0 0 0 2px rgba(0, 255, 163, 0.1);
 }
 
