@@ -20,38 +20,38 @@ export default function Home() {
   }
 
   const animeResources = [
-    { title: "Animeland", description: "A popular site for streaming subbed and dubbed anime." },
-    { title: "Gogoanime", description: "Extensive library of anime series and movies." },
-    { title: "Aniwatch", description: "Ad-free anime streaming platform with a clean interface." },
-    { title: "AnimePahe", description: "Known for high-quality, low file size anime downloads and streams." },
+    { id: 'anime1', title: "Animeland", description: "A popular site for streaming subbed and dubbed anime." },
+    { id: 'anime2', title: "Gogoanime", description: "Extensive library of anime series and movies." },
+    { id: 'anime3', title: "Aniwatch", description: "Ad-free anime streaming platform with a clean interface." },
+    { id: 'anime4', title: "AnimePahe", description: "Known for high-quality, low file size anime downloads and streams." },
   ]
 
   const torrentResources = [
-    { title: "Torrentking", description: "A popular torrent indexing site with a wide variety of content." },
-    { title: "TorrentCue", description: "Curated torrent listings for various media types." },
-    { title: "1337x", description: "One of the most popular torrent sites with a clean interface." },
-    { title: "RARBG", description: "Known for high-quality video torrents and a user-friendly interface." },
+    { id: 'torrent1', title: "Torrentking", description: "A popular torrent indexing site with a wide variety of content." },
+    { id: 'torrent2', title: "TorrentCue", description: "Curated torrent listings for various media types." },
+    { id: 'torrent3', title: "1337x", description: "One of the most popular torrent sites with a clean interface." },
+    { id: 'torrent4', title: "RARBG", description: "Known for high-quality video torrents and a user-friendly interface." },
   ]
 
   const moviesTVResources = [
-    { title: "movie-web.app", description: "A sleek, modern streaming platform for movies and TV shows." },
-    { title: "fmoviesz.to", description: "Large collection of movies and TV series for streaming." },
-    { title: "HDToday", description: "High-definition streaming for latest movies and TV shows." },
-    { title: "Braflix", description: "User-friendly streaming app with a vast library of content." },
+    { id: 'movie1', title: "movie-web.app", description: "A sleek, modern streaming platform for movies and TV shows." },
+    { id: 'movie2', title: "fmoviesz.to", description: "Large collection of movies and TV series for streaming." },
+    { id: 'movie3', title: "HDToday", description: "High-definition streaming for latest movies and TV shows." },
+    { id: 'movie4', title: "Braflix", description: "User-friendly streaming app with a vast library of content." },
   ]
 
   const bookResources = [
-    { title: "Library Genesis", description: "Massive digital library for books and scientific articles." },
-    { title: "Z-Library", description: "One of the world's largest online libraries." },
-    { title: "Project Gutenberg", description: "A library of over 60,000 free eBooks." },
-    { title: "Sci-Hub", description: "A website for accessing scientific articles." },
+    { id: 'book1', title: "Library Genesis", description: "Massive digital library for books and scientific articles." },
+    { id: 'book2', title: "Z-Library", description: "One of the world's largest online libraries." },
+    { id: 'book3', title: "Project Gutenberg", description: "A library of over 60,000 free eBooks." },
+    { id: 'book4', title: "Sci-Hub", description: "A website for accessing scientific articles." },
   ]
 
   const gameResources = [
-    { title: "FitGirl Repacks", description: "Popular site for compressed game downloads." },
-    { title: "GOG Games", description: "DRM-free game downloads." },
-    { title: "Steam Underground", description: "Community for game cracks and discussions." },
-    { title: "CroHasIt", description: "Game cracks and updates repository." },
+    { id: 'game1', title: "FitGirl Repacks", description: "Popular site for compressed game downloads." },
+    { id: 'game2', title: "GOG Games", description: "DRM-free game downloads." },
+    { id: 'game3', title: "Steam Underground", description: "Community for game cracks and discussions." },
+    { id: 'game4', title: "CroHasIt", description: "Game cracks and updates repository." },
   ]
 
   const allResources = {
@@ -63,12 +63,12 @@ export default function Home() {
   }
 
   const renderResourceSection = (title, resources) => (
-    <section className="mb-8">
+    <section key={title} className="mb-8">
       <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {filterResources(resources).map((resource, index) => (
           <ResourceCard
-            key={index}
+            key={`${title}-${resource.title}-${index}`}
             title={resource.title}
             description={resource.description}
           />
@@ -101,8 +101,8 @@ export default function Home() {
       </div>
 
       {category === 'home' && (
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Digital Index</h1>
+        <div key="home-welcome" className="mb-8">
+          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Piracy Index</h1>
           <p className="text-muted-foreground">
             Explore our curated collection of digital resources across various categories.
           </p>
@@ -115,7 +115,7 @@ export default function Home() {
         )
       ) : (
         category === 'legal' ? (
-          <div>
+          <div key="legal-information">
             <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">Legal Information</h2>
             <p className="text-muted-foreground">
               This section provides information about copyright laws and legal alternatives to piracy.

@@ -29,20 +29,19 @@ export function Sidebar() {
       
       <nav className="space-y-2">
         {navItems.map((item) => (
-          <Link 
-            key={item.href}
-            href={item.href} 
-            className={cn(
-              "flex items-center gap-3 px-3 py-2 transition-colors rounded-lg",
-              category === item.category
-                ? "text-foreground bg-accent"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent"
-            )}
-            onClick={() => setCategory(item.category as any)}
-          >
-            <item.icon className="w-4 h-4" />
-            {item.label}
-          </Link>
+ <button 
+ key={item.category}
+ className={cn(
+   "flex items-center gap-3 px-3 py-2 transition-colors rounded-lg w-full text-left",
+   category === item.category
+     ? "text-[#00FFA3] bg-accent"
+     : "text-muted-foreground hover:text-[#00FFA3] hover:bg-accent"
+ )}
+ onClick={() => setCategory(item.category as any)}
+>
+ <item.icon className="w-4 h-4" />
+ {item.label}
+</button>
         ))}
       </nav>
     </div>
