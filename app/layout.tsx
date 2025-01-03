@@ -8,8 +8,8 @@ import { MobileMenu } from '@/components/mobile-menu'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Digital Index',
-  description: 'Your curated collection of digital resources',
+  title: 'Piracy Index',
+  description: 'curated collection of best piracy sites',
 }
 
 export default function RootLayout({

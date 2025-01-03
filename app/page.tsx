@@ -102,9 +102,9 @@ export default function Home() {
 
       {category === 'home' && (
         <div key="home-welcome" className="mb-8">
-          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Piracy Index</h1>
+          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to the Piracy Index</h1>
           <p className="text-muted-foreground">
-            Explore our curated collection of digital resources across various categories.
+            The greatest collection of best piracy sites on internet :)
           </p>
         </div>
       )}
