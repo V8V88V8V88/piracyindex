@@ -10,7 +10,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const { category } = useCategory()
 
-  const filterResources = (resources) => {
+  const filterResources = (resources: { title: string; description: string }[]) => {
     if (!searchQuery) return resources
     const lowerQuery = searchQuery.toLowerCase()
     return resources.filter(resource => 
@@ -62,11 +62,11 @@ export default function Home() {
     'games': gameResources,
   }
 
-  const renderResourceSection = (title, resources) => (
+  const renderResourceSection = (title: string, resources: { title: string; description: string }[]) => (
     <section key={title} className="mb-8">
       <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {filterResources(resources).map((resource, index) => (
+        {filterResources(resources).map((resource: { title: string; description: string }, index: number) => (
           <ResourceCard
             key={`${title}-${resource.title}-${index}`}
             title={resource.title}
@@ -77,7 +77,7 @@ export default function Home() {
     </section>
   )
 
-  const getCategoryTitle = (category) => {
+  const getCategoryTitle = (category: string) => {
     switch(category) {
       case 'torrent': return "Torrent Sites";
       case 'movies-tv': return "Movies & TV Streaming";
