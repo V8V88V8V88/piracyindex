@@ -5,11 +5,12 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Sidebar } from '@/components/sidebar'
 import { CategoryProvider } from '@/components/category-provider'
 import { MobileMenu } from '@/components/mobile-menu'
+import { Footer } from '@/components/footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Piracy Index',
-  description: 'curated collection of best piracy sites',
+  title: 'Digital Index',
+  description: 'Your curated collection of digital resources',
 }
 
 export default function RootLayout({
@@ -37,6 +38,7 @@ export default function RootLayout({
             </div>
           </CategoryProvider>
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   )
