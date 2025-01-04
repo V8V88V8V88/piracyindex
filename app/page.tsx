@@ -103,7 +103,7 @@ export default function Home() {
 
       {category === 'home' && (
         <div key="home-welcome" className="mb-8">
-          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Digital Index</h1>
+          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Pirate Index</h1>
           <p className="text-muted-foreground">
           The greatest collection of best piracy sites on internet :)
           </p>
