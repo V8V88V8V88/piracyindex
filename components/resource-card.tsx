@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Card,
   CardDescription,
@@ -8,21 +9,29 @@ import {
 interface ResourceCardProps {
   title: string
   description: string
+  url: string
 }
 
-export function ResourceCard({ title, description }: ResourceCardProps) {
+export function ResourceCard({ title, description, url }: ResourceCardProps) {
+  const handleClick = () => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
-    <Card className="
-      group relative overflow-hidden
-      bg-[#0f1419]/80 backdrop-blur 
-      supports-[backdrop-filter]:bg-[#0f1419]/60 
-      border-2 border-[#1a2634] 
-      hover:border-[#00FFA3]/50
-      hover:bg-[#1a2634]/80
-      transition-all duration-300 
-      cursor-pointer 
-      hover:scale-105
-    ">
+    <Card 
+      className="
+        group relative overflow-hidden
+        bg-[#0f1419]/80 backdrop-blur 
+        supports-[backdrop-filter]:bg-[#0f1419]/60 
+        border-2 border-[#1a2634] 
+        hover:border-[#00FFA3]/50
+        hover:bg-[#1a2634]/80
+        transition-all duration-300 
+        cursor-pointer 
+        hover:scale-105
+      "
+      onClick={handleClick}
+    >
       <div className="
         absolute inset-0 -translate-x-full 
         bg-gradient-to-r from-transparent via-[#00FFA3]/10 to-transparent
