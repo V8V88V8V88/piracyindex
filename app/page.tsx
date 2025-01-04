@@ -10,7 +10,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const { category } = useCategory()
 
-  const filterResources = (resources) => {
+  const filterResources = (resources: { id: string, title: string, description: string, url: string }[]) => {
     if (!searchQuery) return resources
     const lowerQuery = searchQuery.toLowerCase()
     return resources.filter(resource => 
@@ -62,11 +62,11 @@ export default function Home() {
     'games': gameResources,
   }
 
-  const renderResourceSection = (title, resources) => (
+  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string }[]) => (
     <section key={title} className="mb-8">
       <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {filterResources(resources).map((resource) => (
+        {filterResources(resources).map((resource: { id: string, title: string, description: string, url: string }) => (
           <ResourceCard
             key={resource.id}
             title={resource.title}
@@ -78,7 +78,7 @@ export default function Home() {
     </section>
   )
 
-  const getCategoryTitle = (category) => {
+  const getCategoryTitle = (category: string) => {
     switch(category) {
       case 'torrent': return "Torrent Sites";
       case 'movies-tv': return "Movies & TV Streaming";
@@ -105,7 +105,7 @@ export default function Home() {
         <div key="home-welcome" className="mb-8">
           <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Digital Index</h1>
           <p className="text-muted-foreground">
-            Explore our curated collection of digital resources across various categories.
+          The greatest collection of best piracy sites on internet :)
           </p>
         </div>
       )}
