@@ -2,11 +2,13 @@
 
 import { Home, Download, Film, Tv, Book, Scale, Gamepad2 } from 'lucide-react'
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useCategory } from './category-provider'
 import { cn } from '@/lib/utils'
 
 export function Sidebar() {
   const { category, setCategory } = useCategory()
+  const router = useRouter()
 
   const navItems = [
     { icon: Home, label: 'Home', href: '/', category: 'home' },
@@ -17,6 +19,11 @@ export function Sidebar() {
     { icon: Gamepad2, label: 'Games', href: '/games', category: 'games' },
     { icon: Scale, label: 'Legal', href: '/legal', category: 'legal' },
   ]
+
+  const handleNavigation = (item: typeof navItems[0]) => {
+    setCategory(item.category as any)
+    router.push(item.href)
+  }
 
   return (
     <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-[#0b0d10] backdrop-blur supports-[backdrop-filter]:bg-[#0b0d10]">
@@ -29,19 +36,19 @@ export function Sidebar() {
       
       <nav className="space-y-2">
         {navItems.map((item) => (
- <button 
- key={item.category}
- className={cn(
-   "flex items-center gap-3 px-3 py-2 transition-colors rounded-lg w-full text-left",
-   category === item.category
-     ? "text-[#00FFA3] bg-[#0b0d10]"
-     : "text-muted-foreground hover:text-[#00FFA3] hover:bg-accent"
- )}
- onClick={() => setCategory(item.category as any)}
->
- <item.icon className="w-4 h-4" />
- {item.label}
-</button>
+          <button 
+            key={item.category}
+            className={cn(
+              "flex items-center gap-3 px-3 py-2 transition-all rounded-lg w-full text-left",
+              category === item.category
+                ? "text-[#00FFA3] bg-[#00FFA3]/10 border border-[#00FFA3]/20"
+                : "text-muted-foreground hover:text-[#00FFA3] hover:border hover:border-[#00FFA3]/20 border border-transparent"
+            )}
+            onClick={() => handleNavigation(item)}
+          >
+            <item.icon className="w-4 h-4" />
+            {item.label}
+          </button>
         ))}
       </nav>
     </div>
