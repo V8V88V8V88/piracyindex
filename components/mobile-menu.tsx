@@ -4,12 +4,13 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useCategory } from './category-provider'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const { category, setCategory } = useCategory()
+  const router = useRouter()
 
   const navItems = [
     { icon: 'Home', label: 'Home', href: '/', category: 'home' },
@@ -20,6 +21,12 @@ export function MobileMenu() {
     { icon: 'Gamepad2', label: 'Games', href: '/games', category: 'games' },
     { icon: 'Scale', label: 'Legal', href: '/legal', category: 'legal' },
   ]
+  
+  const handleNavigation = (item: typeof navItems[0]) => {
+    setCategory(item.category as any)
+    router.push(item.href)
+    setIsOpen(false)
+  }
 
   return (
     <div className="md:hidden">
@@ -35,22 +42,18 @@ export function MobileMenu() {
         <div className="fixed inset-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-40">
           <nav className="flex flex-col items-center justify-center h-full space-y-4">
             {navItems.map((item) => (
-              <Link
+              <button
                 key={item.href}
-                href={item.href}
                 className={cn(
                   "text-lg font-medium transition-colors",
                   category === item.category
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 )}
-                onClick={() => {
-                  setCategory(item.category as any)
-                  setIsOpen(false)
-                }}
+                onClick={() => handleNavigation(item)}
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
           </nav>
         </div>
