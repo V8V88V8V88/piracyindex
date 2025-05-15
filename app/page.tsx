@@ -62,21 +62,30 @@ export default function Home() {
     'games': gameResources,
   }
 
-  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string }[]) => (
-    <section key={title} className="mb-8">
-      <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {filterResources(resources).map((resource: { id: string, title: string, description: string, url: string }) => (
-          <ResourceCard
-            key={resource.id}
-            title={resource.title}
-            description={resource.description}
-            url={resource.url}
-          />
-        ))}
-      </div>
-    </section>
-  )
+  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string }[]) => {
+    const filteredResources = filterResources(resources);
+    
+    // Don't render the section if there are no matching resources
+    if (searchQuery && filteredResources.length === 0) {
+      return null;
+    }
+    
+    return (
+      <section key={title} className="mb-8">
+        <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {filteredResources.map((resource: { id: string, title: string, description: string, url: string }) => (
+            <ResourceCard
+              key={resource.id}
+              title={resource.title}
+              description={resource.description}
+              url={resource.url}
+            />
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   const getCategoryTitle = (category: string) => {
     switch(category) {
@@ -88,6 +97,15 @@ export default function Home() {
       default: return "All Resources";
     }
   }
+
+  // Check if there are any matching results
+  const hasSearchResults = searchQuery ? 
+    Object.values(allResources).some(resources => 
+      resources.some(resource => 
+        resource.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        resource.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    ) : true;
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
@@ -101,11 +119,20 @@ export default function Home() {
         />
       </div>
 
-      {category === 'home' && (
+      {category === 'home' && !searchQuery && (
         <div key="home-welcome" className="mb-8">
           <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Pirate Index</h1>
           <p className="text-muted-foreground">
           The greatest collection of best piracy sites on internet :)
+          </p>
+        </div>
+      )}
+
+      {searchQuery && !hasSearchResults && (
+        <div className="text-center py-12">
+          <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">No matching results</h2>
+          <p className="text-muted-foreground">
+            We couldn't find any resources matching your search. Try different keywords.
           </p>
         </div>
       )}
