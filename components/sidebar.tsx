@@ -1,9 +1,9 @@
 "use client"
 
 import { Home, Download, Film, Tv, Book, Scale, Gamepad2 } from 'lucide-react'
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useCategory } from './category-provider'
+import { ThemeToggle } from './theme-toggle'
 import { cn } from '@/lib/utils'
 
 export function Sidebar() {
@@ -26,12 +26,15 @@ export function Sidebar() {
   }
 
   return (
-    <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-[#0b0d10] backdrop-blur supports-[backdrop-filter]:bg-[#0b0d10]">
-      <div className="flex items-center gap-2 mb-8">
-        <div className="w-8 h-8 rounded-full bg-[#00FFA3]/20 flex items-center justify-center">
-          <div className="w-3 h-3 rounded-full bg-[#00FFA3] animate-pulse" />
+    <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+            <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+          </div>
+          <h1 className="text-xl font-semibold text-primary">Piracy Index</h1>
         </div>
-        <h1 className="text-xl font-semibold text-[#00FFA3]">Piracy Index</h1>
+        <ThemeToggle />
       </div>
       
       <nav className="space-y-2">
@@ -41,8 +44,8 @@ export function Sidebar() {
             className={cn(
               "flex items-center gap-3 px-3 py-2 transition-all rounded-lg w-full text-left",
               category === item.category
-                ? "text-[#00FFA3] bg-[#00FFA3]/10 border border-[#00FFA3]/20"
-                : "text-muted-foreground hover:text-[#00FFA3] hover:border hover:border-[#00FFA3]/20 border border-transparent"
+                ? "text-primary bg-primary/10 border border-primary/20"
+                : "text-muted-foreground hover:text-primary hover:border hover:border-primary/20 border border-transparent"
             )}
             onClick={() => handleNavigation(item)}
           >

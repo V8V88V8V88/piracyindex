@@ -9,7 +9,7 @@ import { Footer } from '@/components/footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Digital Index',
+  title: 'Piracy Index',
   description: 'Your curated collection of digital resources',
 }
 
@@ -19,15 +19,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(
         GeistSans.className,
-        "min-h-screen bg-[#0f1419] antialiased"
+        "min-h-screen antialiased"
       )}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem={false}
+          enableSystem={true}
           disableTransitionOnChange
         >
           <CategoryProvider>

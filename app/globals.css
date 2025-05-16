@@ -4,6 +4,30 @@
  
 @layer base {
   :root {
+    /* Light mode */
+    --background: 0 0% 98%;  /* #fafafa */
+    --foreground: 215 27% 15%;  /* #1c242e */
+    --card: 0 0% 100%;  /* #ffffff */
+    --card-foreground: 215 27% 15%;  /* #1c242e */
+    --popover: 0 0% 100%;  /* #ffffff */
+    --popover-foreground: 215 27% 15%;  /* #1c242e */
+    --primary: 156 80% 35%;  /* #138a64 - softer green for light mode */
+    --primary-foreground: 0 0% 100%;  /* white text on green */
+    --secondary: 215 15% 92%;  /* #e9ecf0 */
+    --secondary-foreground: 215 27% 15%;
+    --muted: 215 15% 92%;
+    --muted-foreground: 215 20% 45%;
+    --accent: 156 80% 35%;  /* matching primary */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 15% 88%;
+    --input: 215 15% 88%;
+    --ring: 156 80% 35%;
+    --radius: 1rem;
+  }
+
+  .dark {
     --background: 215 27% 8%;  /* #0f1419 */
     --foreground: 0 0% 100%;
     --card: 215 27% 10%;
@@ -23,7 +47,6 @@
     --border: 215 27% 15%;
     --input: 215 27% 15%;
     --ring: 156 100% 50%;
-    --radius: 1rem;
   }
 }
 
@@ -33,25 +56,39 @@
   }
   
   html {
-    @apply bg-[#0f1419];
+    @apply bg-background;
   }
   
   body {
-    @apply bg-[#0f1419] text-foreground;
+    @apply bg-background text-foreground;
   }
 
-  ::-webkit-scrollbar {
+  .dark ::-webkit-scrollbar {
     width: 10px;
     background-color: #0f1419;
   }
 
-  ::-webkit-scrollbar-thumb {
+  .dark ::-webkit-scrollbar-thumb {
     background-color: #00FFA3;
     border-radius: 5px;
   }
 
-  ::-webkit-scrollbar-track {
+  .dark ::-webkit-scrollbar-track {
     background-color: #1a1f25;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f0f0f0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #138a64;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
   }
 }
 
@@ -63,13 +100,18 @@
   border: 1px solid rgba(0, 255, 163, 0.1);
 }
 
-.card-hover:hover {
+.dark .card-hover:hover {
   border-color: rgba(0, 255, 163, 0.3);
   box-shadow: 0 0 20px rgba(0, 255, 163, 0.1);
 }
 
+.card-hover:hover {
+  border-color: rgba(19, 138, 100, 0.3);
+  box-shadow: 0 0 20px rgba(19, 138, 100, 0.1);
+}
+
 .section-title {
-  @apply text-[#00FFA3] font-semibold;
+  @apply text-primary font-semibold;
 }
 
 .nav-item {
@@ -77,22 +119,22 @@
 }
 
 .nav-item:hover {
-  @apply text-[#00FFA3];
-  background: rgba(0, 255, 163, 0.1);
+  @apply text-primary;
+  background: rgba(var(--primary), 0.1);
 }
 
 .nav-item.active {
-  @apply text-[#00FFA3];
-  background: rgba(0, 255, 163, 0.15);
+  @apply text-primary;
+  background: rgba(var(--primary), 0.15);
 }
 
 .search-input {
-  background: rgba(26, 31, 37, 0.6);
-  border: 1px solid rgba(0, 255, 163, 0.1);
+  @apply bg-background/80;
+  border: 1px solid rgba(var(--primary), 0.1);
 }
 
 .search-input:focus {
-  border-color: rgba(0, 255, 163, 0.3);
-  box-shadow: 0 0 0 2px rgba(0, 255, 163, 0.1);
+  border-color: rgba(var(--primary), 0.3);
+  box-shadow: 0 0 0 2px rgba(var(--primary), 0.1);
 }
 

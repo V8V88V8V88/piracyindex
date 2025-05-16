@@ -6,6 +6,7 @@ import { useCategory } from './category-provider'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
+import { ThemeToggle } from './theme-toggle'
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,14 +31,25 @@ export function MobileMenu() {
 
   return (
     <div className="md:hidden">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="fixed top-4 right-4 z-50"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </Button>
+      <div className="fixed top-4 left-4 z-50 flex items-center">
+        <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center mr-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+        </div>
+        <h1 className="text-lg font-semibold text-primary">Piracy Index</h1>
+      </div>
+      
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <ThemeToggle />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full hover:bg-primary/10"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
+      </div>
+      
       {isOpen && (
         <div className="fixed inset-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-40">
           <nav className="flex flex-col items-center justify-center h-full space-y-4">
@@ -45,10 +57,10 @@ export function MobileMenu() {
               <button
                 key={item.href}
                 className={cn(
-                  "text-lg font-medium transition-colors",
+                  "text-lg font-medium transition-colors px-4 py-2 rounded-lg",
                   category === item.category
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                 )}
                 onClick={() => handleNavigation(item)}
               >

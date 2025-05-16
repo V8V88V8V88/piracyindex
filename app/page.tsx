@@ -72,7 +72,7 @@ export default function Home() {
     
     return (
       <section key={title} className="mb-8">
-        <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">{title}</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">{title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {filteredResources.map((resource: { id: string, title: string, description: string, url: string }) => (
             <ResourceCard
@@ -121,7 +121,7 @@ export default function Home() {
 
       {category === 'home' && !searchQuery && (
         <div key="home-welcome" className="mb-8">
-          <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Welcome to Pirate Index</h1>
+          <h1 className="text-3xl font-bold text-primary mb-3">Welcome to Pirate Index</h1>
           <p className="text-muted-foreground">
           The greatest collection of best piracy sites on internet :)
           </p>
@@ -130,7 +130,7 @@ export default function Home() {
 
       {searchQuery && !hasSearchResults && (
         <div className="text-center py-12">
-          <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">No matching results</h2>
+          <h2 className="text-2xl font-semibold text-primary mb-4">No matching results</h2>
           <p className="text-muted-foreground">
             We couldn't find any resources matching your search. Try different keywords.
           </p>
@@ -144,7 +144,7 @@ export default function Home() {
       ) : (
         category === 'legal' ? (
           <div key="legal-information">
-            <h2 className="text-2xl font-semibold text-[#00FFA3] mb-4">Legal Information</h2>
+            <h2 className="text-2xl font-semibold text-primary mb-4">Legal Information</h2>
             <p className="text-muted-foreground">
               This section provides information about copyright laws and legal alternatives to piracy.
               Remember that downloading copyrighted material without permission may be illegal in your country.

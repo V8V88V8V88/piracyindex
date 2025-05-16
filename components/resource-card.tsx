@@ -21,11 +21,11 @@ export function ResourceCard({ title, description, url }: ResourceCardProps) {
     <Card 
       className="
         group relative overflow-hidden
-        bg-[#0f1419]/80 backdrop-blur 
-        supports-[backdrop-filter]:bg-[#0f1419]/60 
-        border-2 border-[#1a2634] 
-        hover:border-[#00FFA3]/50
-        hover:bg-[#1a2634]/80
+        bg-background/80 backdrop-blur 
+        supports-[backdrop-filter]:bg-background/60 
+        border-2 border-border
+        hover:border-primary/50
+        hover:bg-secondary/80
         transition-all duration-300 
         cursor-pointer 
         hover:scale-105
@@ -34,7 +34,7 @@ export function ResourceCard({ title, description, url }: ResourceCardProps) {
     >
       <div className="
         absolute inset-0 -translate-x-full 
-        bg-gradient-to-r from-transparent via-[#00FFA3]/10 to-transparent
+        bg-gradient-to-r from-transparent via-primary/10 to-transparent
         group-hover:translate-x-full transition-transform duration-700
       "></div>
       <CardHeader>
