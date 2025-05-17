@@ -38,7 +38,7 @@ export default function MoviesTVPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Movies & TV Streaming</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Movies & TV Streaming</h1>
         <p className="text-muted-foreground">
           Find the best streaming sites for movies and TV shows.
         </p>

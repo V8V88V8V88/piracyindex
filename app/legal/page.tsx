@@ -21,15 +21,15 @@ export default function LegalPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Legal Resources</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Legal Resources</h1>
         <p className="text-muted-foreground">
           Legal streaming and download options for digital content.
         </p>
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-lg border border-[#1a2634] p-6 bg-[#0f1419]/80 backdrop-blur">
-          <h2 className="text-xl font-semibold mb-4 text-[#00FFA3]">Important Disclaimer</h2>
+        <div className="rounded-lg border border-border p-6 bg-background/80 backdrop-blur">
+          <h2 className="text-xl font-semibold mb-4 text-primary">Important Disclaimer</h2>
           <p className="mb-4">This section provides information about legal alternatives to piracy. The Piracy Index does not host or provide any copyrighted content directly.</p>
           
           <h3 className="text-lg font-medium mb-2">Legal Alternatives</h3>

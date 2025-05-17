@@ -38,7 +38,7 @@ export default function AnimePage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Anime Sites</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Anime Sites</h1>
         <p className="text-muted-foreground">
           Discover the best sites for streaming and downloading anime content.
         </p>

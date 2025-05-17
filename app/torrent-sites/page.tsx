@@ -38,7 +38,7 @@ export default function TorrentSitesPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Torrent Sites</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Torrent Sites</h1>
         <p className="text-muted-foreground">
           A collection of reliable torrent sites for downloading various digital content.
         </p>

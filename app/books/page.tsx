@@ -38,7 +38,7 @@ export default function BooksPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Books Piracy</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Books Piracy</h1>
         <p className="text-muted-foreground">
           Find resources for e-books, audiobooks, and digital literature.
         </p>

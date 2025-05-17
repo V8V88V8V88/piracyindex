@@ -38,7 +38,7 @@ export default function GamesPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[#00FFA3] mb-3">Games</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Games</h1>
         <p className="text-muted-foreground">
           Resources for gaming across different platforms.
         </p>
