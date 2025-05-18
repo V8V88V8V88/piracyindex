@@ -10,7 +10,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const { category } = useCategory()
 
-  const filterResources = (resources: { id: string, title: string, description: string, url: string }[]) => {
+  const filterResources = (resources: { id: string, title: string, description: string, url: string, starred?: boolean }[]) => {
     if (!searchQuery) return resources
     const lowerQuery = searchQuery.toLowerCase()
     return resources.filter(resource => 
@@ -34,10 +34,14 @@ export default function Home() {
   ]
 
   const moviesTVResources = [
-    { id: 'movie1', title: "movie-web.app", description: "A sleek, modern streaming platform for movies and TV shows.", url: "https://movie-web.app" },
-    { id: 'movie2', title: "fmoviesz.to", description: "Large collection of movies and TV series for streaming.", url: "https://fmoviesz.to" },
-    { id: 'movie3', title: "HDToday", description: "High-definition streaming for latest movies and TV shows.", url: "https://hdtoday.tv" },
-    { id: 'movie4', title: "Braflix", description: "User-friendly streaming app with a vast library of content.", url: "https://braflix.com" },
+    { id: 'hexa', title: "Hexa", description: "Movies / TV / Auto-Next / Watch Parties", url: "https://hexa.watch/", starred: true },
+    { id: 'movie-web', title: "movie-web", description: "Movies / TV / Auto-Next", url: "https://erynith.github.io/movie-web-instances/", starred: true },
+    { id: 'cineby', title: "Cineby", description: "Movies / TV / Auto-Next", url: "https://www.cineby.app/", starred: true },
+    { id: 'rive', title: "Rive", description: "Movies / TV / Auto-Next", url: "https://rivestream.org/", starred: true },
+    { id: 'xprime', title: "XPrime", description: "Movies / TV / Auto-Next", url: "https://xprime.tv/", starred: true },
+    { id: 'spenflix', title: "SpenFlix", description: "Movies / TV / Auto-Next", url: "https://watch.spencerdevs.xyz/", starred: true },
+    { id: 'vidbox', title: "Vidbox", description: "Movies / TV / Auto-Next", url: "https://vidbox.to/", starred: true },
+    { id: '1shows', title: "1Shows", description: "Movies / TV / Watch Parties / Auto Next", url: "https://www.1shows.live/", starred: true },
   ]
 
   const bookResources = [
@@ -62,7 +66,7 @@ export default function Home() {
     'games': gameResources,
   }
 
-  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string }[]) => {
+  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string, starred?: boolean }[]) => {
     const filteredResources = filterResources(resources);
     
     // Don't render the section if there are no matching resources
@@ -74,7 +78,7 @@ export default function Home() {
       <section key={title} className="mb-8">
         <h2 className="text-2xl font-semibold text-primary mb-4">{title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {filteredResources.map((resource: { id: string, title: string, description: string, url: string }) => (
+          {filteredResources.map((resource: { id: string, title: string, description: string, url: string, starred?: boolean }) => (
             <ResourceCard
               key={resource.id}
               title={resource.title}
