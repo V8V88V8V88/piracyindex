@@ -1,7 +1,7 @@
 # piracyindex
 index of all the greatest sites on internet :)
 
-https://www.piracyindex.xyz/
+https://piracyindex.vercel.app/
 
 ## Disclaimer
 
