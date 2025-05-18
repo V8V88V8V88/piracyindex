@@ -21,32 +21,48 @@ export default function LegalPage() {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-primary mb-3">Legal Resources</h1>
+        <h1 className="text-3xl font-bold text-primary mb-3">Legal Information</h1>
         <p className="text-muted-foreground">
-          Legal streaming and download options for digital content.
+          Important legal information regarding this website and its content.
         </p>
       </div>
 
       <div className="space-y-6">
         <div className="rounded-lg border border-border p-6 bg-background/80 backdrop-blur">
-          <h2 className="text-xl font-semibold mb-4 text-primary">Important Disclaimer</h2>
-          <p className="mb-4">This section provides information about legal alternatives to piracy. The Piracy Index does not host or provide any copyrighted content directly.</p>
+          <h2 className="text-xl font-semibold mb-4 text-primary">Disclaimer of Liability</h2>
+          
+          <div className="space-y-4 mb-6">
+            <p>Piracy Index is a search engine and indexing service that organizes and categorizes links to external websites. We do not host, distribute, or store any copyrighted content on our servers. All resources listed are publicly available information linked from third-party websites.</p>
+            
+            <p>The Piracy Index operates solely as an informational directory and search tool. We do not promote, encourage, or endorse copyright infringement or any illegal activities. The inclusion of any website in our index does not imply our endorsement of the content found therein.</p>
+            
+            <p>We are not affiliated with, associated with, or sponsored by any of the websites, services, or entities listed in our directory. The Piracy Index has no control over and assumes no responsibility for the content, privacy policies, or practices of any third-party websites.</p>
+          </div>
+          
+          <h3 className="text-lg font-medium mb-2">DMCA Compliance</h3>
+          <p className="mb-4">If you believe that your copyrighted work has been improperly listed on our index, please contact the owner or operator of the specific third-party website where the content is hosted. If you wish to have a link removed from our index, please contact us with the appropriate information, and we will promptly review your request.</p>
           
           <h3 className="text-lg font-medium mb-2">Legal Alternatives</h3>
+          <p className="mb-2">We encourage users to support content creators through legal means:</p>
           <ul className="space-y-2 list-disc pl-5 mb-4">
-            <li>Consider subscribing to legitimate streaming services</li>
+            <li>Subscribe to legitimate streaming services</li>
+            <li>Purchase content from authorized retailers</li>
             <li>Use public domain resources for older works</li>
-            <li>Check your local library for digital borrowing options</li>
-            <li>Look for officially free content supported by advertisements</li>
+            <li>Utilize your local library's digital borrowing options</li>
+            <li>Access officially free content supported by advertisements</li>
           </ul>
           
-          <h3 className="text-lg font-medium mb-2">Legal Risks</h3>
-          <p>Remember that downloading or sharing copyrighted material without permission may be illegal in your country and could result in:</p>
+          <h3 className="text-lg font-medium mb-2">User Responsibility</h3>
+          <p className="mb-2">Users are solely responsible for:</p>
           <ul className="space-y-2 list-disc pl-5">
-            <li>Legal notices from copyright holders</li>
-            <li>Internet service provider actions</li>
-            <li>Potential fines or other penalties</li>
+            <li>Complying with all applicable laws in their jurisdiction</li>
+            <li>Determining the legality of accessing any linked content</li>
+            <li>Any consequences that may arise from their use of information found via our index</li>
           </ul>
+          
+          <div className="mt-6 p-4 bg-secondary/50 rounded-md">
+            <p className="text-sm italic">This disclaimer may be updated periodically without notice. By using the Piracy Index, you acknowledge that you have read and understood this disclaimer and agree to be bound by its terms.</p>
+          </div>
         </div>
       </div>
     </div>
