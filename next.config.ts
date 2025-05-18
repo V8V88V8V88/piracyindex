@@ -2,13 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  experimental: {
-    turbo: {
-      // Enable Turbopack compilation
-      rules: {
-        // Use glob pattern instead of file extension
-        "*.md": ["mdx-loader"],
-      },
+  turbopack: {
+    // Turbopack configuration (now stable)
+    rules: {
+      // Use glob pattern instead of file extension
+      "*.md": ["mdx-loader"],
     },
   },
 };
