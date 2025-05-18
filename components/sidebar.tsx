@@ -2,7 +2,7 @@
 
 import { Home, Download, Film, Tv, Book, Scale, Gamepad2 } from 'lucide-react'
 import { useRouter } from "next/navigation"
-import { useCategory } from './category-provider'
+import { useCategory, Category } from './category-provider'
 import { ThemeToggle } from './theme-toggle'
 import { cn } from '@/lib/utils'
 
@@ -21,7 +21,7 @@ export function Sidebar() {
   ]
 
   const handleNavigation = (item: typeof navItems[0]) => {
-    setCategory(item.category as any)
+    setCategory(item.category as Category)
     router.push(item.href)
   }
 

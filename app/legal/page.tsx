@@ -48,7 +48,7 @@ export default function LegalPage() {
             <li>Subscribe to legitimate streaming services</li>
             <li>Purchase content from authorized retailers</li>
             <li>Use public domain resources for older works</li>
-            <li>Utilize your local library's digital borrowing options</li>
+            <li>Utilize your local library&apos;s digital borrowing options</li>
             <li>Access officially free content supported by advertisements</li>
           </ul>
           

@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState } from 'react'
 
-type Category = 'home' | 'torrent' | 'movies-tv' | 'anime' | 'books' | 'legal'
+export type Category = 'home' | 'torrent' | 'movies-tv' | 'anime' | 'books' | 'games' | 'legal'
 
 type CategoryContextType = {
   category: Category

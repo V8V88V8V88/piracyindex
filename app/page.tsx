@@ -132,7 +132,7 @@ export default function Home() {
         <div className="text-center py-12">
           <h2 className="text-2xl font-semibold text-primary mb-4">No matching results</h2>
           <p className="text-muted-foreground">
-            We couldn't find any resources matching your search. Try different keywords.
+            We couldn&apos;t find any resources matching your search. Try different keywords.
           </p>
         </div>
       )}

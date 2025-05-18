@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useCategory } from './category-provider'
+import { Category } from './category-provider'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
@@ -24,7 +25,7 @@ export function MobileMenu() {
   ]
   
   const handleNavigation = (item: typeof navItems[0]) => {
-    setCategory(item.category as any)
+    setCategory(item.category as Category)
     router.push(item.href)
     setIsOpen(false)
   }
