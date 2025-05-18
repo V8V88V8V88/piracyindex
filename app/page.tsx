@@ -20,10 +20,14 @@ export default function Home() {
   }
 
   const animeResources = [
-    { id: 'anime1', title: "Animeland", description: "A popular site for streaming subbed and dubbed anime.", url: "https://animeland.com" },
-    { id: 'anime2', title: "Gogoanime", description: "Extensive library of anime series and movies.", url: "https://gogoanime.com" },
-    { id: 'anime3', title: "Aniwatch", description: "Ad-free anime streaming platform with a clean interface.", url: "https://aniwatch.com" },
-    { id: 'anime4', title: "AnimePahe", description: "Known for high-quality, low file size anime downloads and streams.", url: "https://animepahe.com" },
+    { id: 'animekai', title: "AnimeKai", description: "Anime / Sub / Dub / Auto-Next", url: "https://animekai.to/home" },
+    { id: 'miruro', title: "Miruro", description: "Anime / Sub / Dub / Auto-Next", url: "https://www.miruro.com/" },
+    { id: 'hianime', title: "HiAnime", description: "Anime / Sub / Dub / Auto-Next", url: "https://hianimez.to/" },
+    { id: 'allmanga', title: "All Manga", description: "Anime / Sub / Dub", url: "https://allmanga.to/" },
+    { id: 'animepahe', title: "animepahe", description: "Anime / Sub / Dub", url: "https://animepahe.ru/" },
+    { id: 'kickassanime', title: "KickAssAnime", description: "Anime / Sub / Dub / Auto-Next", url: "https://kaa.mx/" },
+    { id: 'animag', title: "Animag", description: "Anime / Sub / Dub", url: "https://animag.to/" },
+    { id: 'animez', title: "AnimeZ", description: "Anime / Sub / Dub", url: "https://animez.org/" },
   ]
 
   const torrentResources = [
