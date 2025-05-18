@@ -10,14 +10,14 @@ export default function MoviesTVPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const moviesTVResources = [
-    { id: 'hexa', title: "Hexa", description: "Movies / TV / Auto-Next / Watch Parties", url: "https://hexa.watch/" },
-    { id: 'movie-web', title: "movie-web", description: "Movies / TV / Auto-Next", url: "https://erynith.github.io/movie-web-instances/" },
-    { id: 'xprime', title: "XPrime", description: "Movies / TV / Auto-Next", url: "https://xprime.tv/" },
-    { id: 'spenflix', title: "SpenFlix", description: "Movies / TV / Auto-Next", url: "https://watch.spencerdevs.xyz/" },
-    { id: 'vidbox', title: "Vidbox", description: "Movies / TV / Auto-Next", url: "https://vidbox.to/" },
-    { id: '1shows', title: "1Shows", description: "Movies / TV / Watch Parties / Auto Next", url: "https://www.1shows.live/" },
-    { id: 'rgshows', title: "RgShows", description: "Movies / TV / Watch Parties / Auto Next", url: "https://www.rgshows.me/" },
-    { id: 'vidora', title: "Vidora", description: "Movies / TV / Auto-Next", url: "https://watch.vidora.su/" },
+    { id: 'hexa', title: "Hexa 🏴‍☠️ ", description: "Movies / TV / Auto-Next / Watch Parties", url: "https://hexa.watch/" },
+    { id: 'movie-web', title: "movie-web 🏴‍☠️ ", description: "Movies / TV / Auto-Next", url: "https://erynith.github.io/movie-web-instances/" },
+    { id: 'xprime', title: "XPrime 🏴‍☠️", description: "Movies / TV / Auto-Next", url: "https://xprime.tv/" },
+    { id: 'spenflix', title: "SpenFlix 🏴‍☠️", description: "Movies / TV / Auto-Next", url: "https://watch.spencerdevs.xyz/" },
+    { id: 'vidbox', title: "Vidbox 🏴‍☠️", description: "Movies / TV / Auto-Next", url: "https://vidbox.to/" },
+    { id: '1shows', title: "1Shows 🏴‍☠️ ", description: "Movies / TV / Watch Parties / Auto Next", url: "https://www.1shows.live/" },
+    { id: 'rgshows', title: "RgShows 🏴‍☠️ ", description: "Movies / TV / Watch Parties / Auto Next", url: "https://www.rgshows.me/" },
+    { id: 'vidora', title: "Vidora 🏴‍☠️", description: "Movies / TV / Auto-Next", url: "https://watch.vidora.su/" },
     { id: 'moviemaze', title: "MovieMaze", description: "Movies / TV", url: "https://moviemaze.cc/" },
     { id: 'hydrahd', title: "HydraHD", description: "Movies / TV", url: "https://hydrahd.sh/" },
     { id: 'maxflix', title: "Maxflix", description: "Movies / TV", url: "https://maxflix.top/" },
