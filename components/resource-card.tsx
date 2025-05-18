@@ -25,7 +25,7 @@ export function ResourceCard({ title, description, url }: ResourceCardProps) {
         supports-[backdrop-filter]:bg-background/60 
         border-2 border-border
         hover:border-primary/50
-        hover:bg-secondary/80
+        hover:bg-[hsl(var(--card-hover-bg))]
         transition-all duration-300 
         cursor-pointer 
         hover:scale-105

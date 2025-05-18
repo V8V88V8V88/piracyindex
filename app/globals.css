@@ -13,7 +13,7 @@
     --popover-foreground: 215 27% 15%;  /* #1c242e */
     --primary: 156 80% 35%;  /* #138a64 - softer green for light mode */
     --primary-foreground: 0 0% 100%;  /* white text on green */
-    --secondary: 215 15% 92%;  /* #e9ecf0 */
+    --secondary: 215 15% 97%;  /* #f5f7fa - much lighter for better contrast */
     --secondary-foreground: 215 27% 15%;
     --muted: 215 15% 92%;
     --muted-foreground: 215 20% 45%;
@@ -24,6 +24,7 @@
     --border: 215 15% 88%;
     --input: 215 15% 88%;
     --ring: 156 80% 35%;
+    --card-hover-bg: 156 60% 97%;  /* #f2fbf8 - very light green tint */
     --radius: 1rem;
   }
 
@@ -47,6 +48,7 @@
     --border: 215 27% 15%;
     --input: 215 27% 15%;
     --ring: 156 100% 50%;
+    --card-hover-bg: 156 50% 15%;  /* #0e2e21 - subtle dark green */
   }
 }
 
