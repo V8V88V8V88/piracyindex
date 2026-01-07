@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="py-6 px-4 md:px-8">
       <div className="container flex items-center justify-center h-2">
         <p className="text-center text-sm leading-loose text-muted-foreground">
-          This site is a ❤️ creation of{' '}
+          Piracy Index is curated by{' '}
           <a
             href="https://v8v88v8v88.com"
             target="_blank"

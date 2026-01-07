@@ -27,30 +27,38 @@ export function Sidebar() {
 
   return (
     <div className="hidden md:block w-64 min-h-screen border-r border-border/40 p-6 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+      <div className="flex items-center justify-between mb-10 gap-4">
+        <div className="flex items-center gap-2.5 flex-1 min-w-0">
+          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center ring-2 ring-primary/10 flex-shrink-0">
             <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
           </div>
-          <h1 className="text-xl font-semibold text-primary">Piracy Index</h1>
+          <h1 className="text-base font-semibold text-primary whitespace-nowrap">The Piracy Index</h1>
         </div>
-        <ThemeToggle />
+        <div className="flex-shrink-0">
+          <ThemeToggle />
+        </div>
       </div>
       
-      <nav className="space-y-2">
+      <nav className="space-y-1.5">
         {navItems.map((item) => (
           <button 
             key={item.category}
             className={cn(
-              "flex items-center gap-3 px-3 py-2 transition-all rounded-lg w-full text-left",
+              "group flex items-center gap-3 px-3 py-2.5 transition-all duration-200 rounded-lg w-full text-left relative",
               category === item.category
-                ? "text-primary bg-primary/10 border border-primary/20"
-                : "text-muted-foreground hover:text-primary hover:border hover:border-primary/20 border border-transparent"
+                ? "text-primary bg-primary/15 border border-primary/30 shadow-sm shadow-primary/5"
+                : "text-muted-foreground hover:text-foreground hover:bg-card/50 border border-transparent hover:border-border/50"
             )}
             onClick={() => handleNavigation(item)}
           >
-            <item.icon className="w-4 h-4" />
-            {item.label}
+            {category === item.category && (
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-primary rounded-r-full" />
+            )}
+            <item.icon className={cn(
+              "w-4 h-4 transition-transform duration-200",
+              category === item.category ? "scale-110" : "group-hover:scale-110"
+            )} />
+            <span className="font-medium">{item.label}</span>
           </button>
         ))}
       </nav>

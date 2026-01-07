@@ -29,25 +29,25 @@
   }
 
   .dark {
-    --background: 215 27% 8%;  /* #0f1419 */
+    --background: 0 0% 3%;  /* Pure black/very dark gray - neutral for green theme */
     --foreground: 0 0% 100%;
-    --card: 215 27% 10%;
+    --card: 0 0% 7%;  /* Perfect balance - subtle but visible distinction from background */
     --card-foreground: 0 0% 100%;
-    --popover: 215 27% 10%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
-    --primary: 156 100% 50%;  /* #00FFA3 */
+    --primary: 156 60% 42%;  /* Softer, muted green - easier on eyes */
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 27% 12%;
+    --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 215 27% 12%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 156 100% 50%;  /* #00FFA3 */
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 156 60% 42%;  /* Softer, muted green */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 27% 15%;
-    --input: 215 27% 15%;
-    --ring: 156 100% 50%;
+    --border: 0 0% 15%;  /* Slightly more visible borders for better card definition */
+    --input: 0 0% 12%;
+    --ring: 156 60% 42%;
     --card-hover-bg: 156 50% 15%;  /* #0e2e21 - subtle dark green */
   }
 }
@@ -65,18 +65,54 @@
     @apply bg-background text-foreground;
   }
 
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .slide-in-from-bottom-2 {
+    animation: slide-in-from-bottom 0.4s ease-out;
+  }
+
+  .slide-in-from-bottom-4 {
+    animation: slide-in-from-bottom 0.6s ease-out;
+  }
+
   .dark ::-webkit-scrollbar {
     width: 10px;
-    background-color: #0f1419;
+    background-color: #050505;
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    background-color: #00FFA3;
+    background-color: hsl(156, 60%, 42%);
     border-radius: 5px;
   }
 
   .dark ::-webkit-scrollbar-track {
-    background-color: #1a1f25;
+    background-color: #0a0a0a;
   }
   
   ::-webkit-scrollbar {
@@ -97,14 +133,14 @@
 /* Custom styles for cards and sections */
 .card-hover {
   @apply transition-all duration-300 hover:scale-105;
-  background: rgba(26, 31, 37, 0.6);
+  background: rgba(10, 10, 10, 0.6);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 255, 163, 0.1);
+  border: 1px solid hsl(156, 60%, 42%, 0.1);
 }
 
 .dark .card-hover:hover {
-  border-color: rgba(0, 255, 163, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 163, 0.1);
+  border-color: hsl(156, 60%, 42%, 0.3);
+  box-shadow: 0 0 20px hsl(156, 60%, 42%, 0.1);
 }
 
 .card-hover:hover {
@@ -138,5 +174,25 @@
 .search-input:focus {
   border-color: rgba(var(--primary), 0.3);
   box-shadow: 0 0 0 2px rgba(var(--primary), 0.1);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Improved focus styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Better selection color */
+::selection {
+  background-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
 }
 

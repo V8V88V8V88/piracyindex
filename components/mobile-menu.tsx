@@ -37,7 +37,7 @@ export function MobileMenu() {
           <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center mr-2">
             <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
           </div>
-          <h1 className="text-lg font-semibold text-primary">Piracy Index</h1>
+          <h1 className="text-lg font-semibold text-primary">The Piracy Index</h1>
         </div>
         
         <div className="flex items-center gap-2">

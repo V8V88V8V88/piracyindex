@@ -1,4 +1,5 @@
 import React from 'react'
+import { ExternalLink } from 'lucide-react'
 import {
   Card,
   CardDescription,
@@ -21,27 +22,33 @@ export function ResourceCard({ title, description, url }: ResourceCardProps) {
     <Card 
       className="
         group relative overflow-hidden
-        bg-background/80 backdrop-blur 
-        supports-[backdrop-filter]:bg-background/60 
-        border-2 border-border
+        bg-card
+        border border-border/60
         hover:border-primary/50
         hover:bg-[hsl(var(--card-hover-bg))]
-        transition-all duration-300 
+        hover:shadow-lg hover:shadow-primary/5
+        transition-all duration-300 ease-out
         cursor-pointer 
-        hover:scale-105
+        hover:scale-[1.02] hover:-translate-y-1
+        backdrop-blur-sm
+        h-32
+        flex flex-col
       "
       onClick={handleClick}
     >
       <div className="
         absolute inset-0 -translate-x-full 
-        bg-gradient-to-r from-transparent via-primary/10 to-transparent
-        group-hover:translate-x-full transition-transform duration-700
+        bg-gradient-to-r from-transparent via-primary/5 to-transparent
+        group-hover:translate-x-full transition-transform duration-1000 ease-in-out
       "></div>
-      <CardHeader>
-        <CardTitle className="text-foreground/90 group-hover:text-foreground transition-colors text-lg">
+      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+        <ExternalLink className="h-4 w-4 text-primary" />
+      </div>
+      <CardHeader className="pb-4 flex-1 flex flex-col justify-between p-6">
+        <CardTitle className="text-foreground/95 group-hover:text-foreground transition-colors text-lg font-semibold mb-1.5 line-clamp-1">
           {title}
         </CardTitle>
-        <CardDescription className="opacity-75 group-hover:opacity-100 transition-opacity text-sm">
+        <CardDescription className="opacity-70 group-hover:opacity-90 transition-opacity text-sm leading-relaxed line-clamp-2">
           {description}
         </CardDescription>
       </CardHeader>

@@ -11,7 +11,7 @@ export default function LegalPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="relative mb-8">
-        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/70 z-10" />
         <Input
           placeholder="Search legal information..."
           className="pl-9 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
