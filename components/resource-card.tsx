@@ -11,9 +11,10 @@ interface ResourceCardProps {
   title: string
   description: string
   url: string
+  starred?: boolean
 }
 
-export function ResourceCard({ title, description, url }: ResourceCardProps) {
+export function ResourceCard({ title, description, url, starred }: ResourceCardProps) {
   const handleClick = () => {
     window.open(url, '_blank', 'noopener,noreferrer')
   }
@@ -45,7 +46,8 @@ export function ResourceCard({ title, description, url }: ResourceCardProps) {
         <ExternalLink className="h-4 w-4 text-primary" />
       </div>
       <CardHeader className="pb-4 flex-1 flex flex-col justify-between p-6">
-        <CardTitle className="text-foreground/95 group-hover:text-foreground transition-colors text-lg font-semibold mb-1.5 line-clamp-1">
+        <CardTitle className="text-foreground/95 group-hover:text-foreground transition-colors text-lg font-semibold mb-1.5 line-clamp-1 flex items-center gap-1.5">
+          {starred && <span className="text-yellow-400">⭐</span>}
           {title}
         </CardTitle>
         <CardDescription className="opacity-70 group-hover:opacity-90 transition-opacity text-sm leading-relaxed line-clamp-2">

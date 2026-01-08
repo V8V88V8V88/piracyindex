@@ -79,7 +79,27 @@ export default function AnimePage() {
     { id: '9anime', title: "9anime", description: "Anime / Popular streaming site with HD quality", url: "https://9anime.to" },
     { id: 'nyaa', title: "Nyaa.si", description: "Anime / Popular anime torrent tracker", url: "https://nyaa.si" },
     { id: 'animixplay', title: "AniMixPlay", description: "Anime / Ad-free streaming with clean interface", url: "https://animixplay.to" },
-    { id: 'animethemes', title: "AnimeThemes", description: "Anime themes collection", url: "https://animethemes.moe/" }
+    { id: 'animethemes', title: "AnimeThemes", description: "Anime themes collection", url: "https://animethemes.moe/" },
+    { id: 'animetosho', title: "AnimeTosho", description: "Anime / Torrents / Downloads", url: "https://animetosho.org/" },
+    { id: 'anidex', title: "AniDex", description: "Anime / Torrents", url: "https://anidex.info/" },
+    { id: 'bakabt', title: "BakaBT", description: "Anime / Torrents / Private Tracker", url: "https://bakabt.me/" },
+    { id: 'animebytes', title: "AnimeBytes", description: "Anime / Torrents / Private Tracker", url: "https://animebytes.tv/" },
+    { id: 'animetorrents', title: "AnimeTorrents", description: "Anime / Torrents", url: "https://animetorrents.me/" },
+    { id: 'animeout', title: "AnimeOut", description: "Anime / Downloads", url: "https://www.animeout.xyz/" },
+    { id: 'animekaizoku', title: "AnimeKaizoku", description: "Anime / Downloads", url: "https://animekaizoku.com/" },
+    { id: 'anidl', title: "AniDL", description: "Anime / Downloads", url: "https://anidl.org/" },
+    { id: 'hi10anime', title: "Hi10Anime", description: "Anime / Downloads / High Quality", url: "https://hi10anime.com/" },
+    { id: 'animekisa', title: "AnimeKisa", description: "Anime / Streaming", url: "https://animekisa.tv/" },
+    { id: 'animeultima', title: "AnimeUltima", description: "Anime / Streaming", url: "https://www.animeultima.to/" },
+    { id: 'animevibe', title: "AnimeVibe", description: "Anime / Streaming", url: "https://animevibe.tv/" },
+    { id: 'animeflix', title: "AnimeFlix", description: "Anime / Streaming", url: "https://animeflix.live/" },
+    { id: 'animefreak', title: "AnimeFreak", description: "Anime / Streaming", url: "https://www.animefreak.tv/" },
+    { id: 'animeheaven', title: "AnimeHeaven", description: "Anime / Streaming", url: "https://animeheaven.ru/" },
+    { id: 'animesuge', title: "AnimeSuge", description: "Anime / Streaming", url: "https://animesuge.to/" },
+    { id: 'animeunity', title: "AnimeUnity", description: "Anime / Streaming", url: "https://animeunity.me/" },
+    { id: 'animeworld', title: "AnimeWorld", description: "Anime / Streaming", url: "https://animeworld.tv/" },
+    { id: 'animex', title: "AnimeX", description: "Anime / Streaming", url: "https://animex.live/" },
+    { id: 'animezone', title: "AnimeZone", description: "Anime / Streaming", url: "https://animezone.to/" },
   ];
 
   const filterResources = (resources: { id: string, title: string, description: string, url: string }[]) => {
@@ -159,7 +179,10 @@ export default function AnimePage() {
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors">{resource.title}</h3>
+                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                    {resource.starred && <span className="text-yellow-400">⭐</span>}
+                    {resource.title}
+                  </h3>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 </div>
                 <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">{resource.description}</p>
@@ -179,6 +202,7 @@ export default function AnimePage() {
                 title={resource.title}
                 description={resource.description}
                 url={resource.url}
+                starred={resource.starred}
               />
             </div>
           ))}

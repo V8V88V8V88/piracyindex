@@ -119,6 +119,21 @@ export default function MoviesTVPage() {
     { id: 'netplay', title: "NetPlay", description: "Movies / TV / Auto-Next", url: "https://netplayz.ru/" },
     { id: 'flickystream', title: "FlickyStream", description: "Movies / TV", url: "https://flickystream.com/" },
     { id: 'popcornmovies', title: "PopcornMovies", description: "Movies / TV", url: "https://popcornmovies.to/" },
+    { id: 'fmovies', title: "FMovies", description: "Movies / TV", url: "https://fmovies.to/" },
+    { id: 'soap2day', title: "Soap2Day", description: "Movies / TV", url: "https://soap2day.to/" },
+    { id: 'putlocker', title: "Putlocker", description: "Movies / TV", url: "https://putlocker.sb/" },
+    { id: 'watchseries', title: "WatchSeries", description: "Movies / TV", url: "https://watchseries.mx/" },
+    { id: 'solarmovie', title: "SolarMovie", description: "Movies / TV", url: "https://solarmovie.one/" },
+    { id: 'myflixer', title: "MyFlixer", description: "Movies / TV", url: "https://myflixer.to/" },
+    { id: 'gomovies', title: "GoMovies", description: "Movies / TV", url: "https://gomovies.sx/" },
+    { id: 'watchsomuch', title: "WatchSoMuch", description: "Movies / TV", url: "https://watchsomuch.to/" },
+    { id: 'vumoo', title: "Vumoo", description: "Movies / TV", url: "https://vumoo.to/" },
+    { id: 'cmovies', title: "CMovies", description: "Movies / TV", url: "https://cmovies.ac/" },
+    { id: 'streamm4u', title: "StreamM4u", description: "Movies / TV", url: "https://streamm4u.com/" },
+    { id: 'movie4k', title: "Movie4k", description: "Movies / TV", url: "https://movie4kto.net/" },
+    { id: 'hdmovies', title: "HDMovies", description: "Movies / TV / HD Quality", url: "https://hdmovies.lol/" },
+    { id: 'movierulz', title: "MovieRulz", description: "Movies / TV", url: "https://movierulz.vpn/" },
+    { id: 'tamilrockers', title: "TamilRockers", description: "Movies / TV", url: "https://tamilrockers.ws/" },
   ];
 
   const filterResources = (resources: { id: string, title: string, description: string, url: string }[]) => {
@@ -198,7 +213,10 @@ export default function MoviesTVPage() {
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors">{resource.title}</h3>
+                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                    {resource.starred && <span className="text-yellow-400">⭐</span>}
+                    {resource.title}
+                  </h3>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 </div>
                 <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">{resource.description}</p>
@@ -218,6 +236,7 @@ export default function MoviesTVPage() {
                 title={resource.title}
                 description={resource.description}
                 url={resource.url}
+                starred={resource.starred}
               />
             </div>
           ))}

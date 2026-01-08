@@ -97,7 +97,10 @@ export default function BooksPage() {
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors">{resource.title}</h3>
+                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                    {resource.starred && <span className="text-yellow-400">⭐</span>}
+                    {resource.title}
+                  </h3>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 </div>
                 <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">{resource.description}</p>
@@ -117,6 +120,7 @@ export default function BooksPage() {
                 title={resource.title}
                 description={resource.description}
                 url={resource.url}
+                starred={resource.starred}
               />
             </div>
           ))}

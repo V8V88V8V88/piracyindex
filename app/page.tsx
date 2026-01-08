@@ -24,9 +24,9 @@ export default function Home() {
   }
 
   const animeResources = [
-    { id: 'animekai', title: "AnimeKai", description: "Anime / Sub / Dub / Auto-Next", url: "https://animekai.to/home" },
-    { id: 'miruro', title: "Miruro", description: "Anime / Sub / Dub / Auto-Next", url: "https://www.miruro.com/" },
-    { id: 'hianime', title: "HiAnime", description: "Anime / Sub / Dub / Auto-Next", url: "https://hianimez.to/" },
+    { id: 'animekai', title: "AnimeKai", description: "Anime / Sub / Dub / Auto-Next", url: "https://animekai.to/home", starred: true },
+    { id: 'miruro', title: "Miruro", description: "Anime / Sub / Dub / Auto-Next", url: "https://www.miruro.com/", starred: true },
+    { id: 'hianime', title: "HiAnime", description: "Anime / Sub / Dub / Auto-Next", url: "https://hianimez.to/", starred: true },
     { id: 'allmanga', title: "All Manga", description: "Anime / Sub / Dub", url: "https://allmanga.to/" },
     { id: 'animepahe', title: "animepahe", description: "Anime / Sub / Dub", url: "https://animepahe.ru/" },
     { id: 'kickassanime', title: "KickAssAnime", description: "Anime / Sub / Dub / Auto-Next", url: "https://kaa.mx/" },
@@ -35,10 +35,11 @@ export default function Home() {
   ]
 
   const torrentResources = [
-    { id: 'torrent1', title: "Torrentking", description: "A popular torrent indexing site with a wide variety of content.", url: "https://torrentking.com" },
-    { id: 'torrent2', title: "TorrentCue", description: "Curated torrent listings for various media types.", url: "https://torrentcue.com" },
-    { id: 'torrent3', title: "1337x", description: "One of the most popular torrent sites with a clean interface.", url: "https://1337x.to" },
-    { id: 'torrent4', title: "RARBG", description: "Known for high-quality video torrents and a user-friendly interface.", url: "https://rarbg.to" },
+    { id: 'rutracker', title: "RuTracker", description: "Huge Russian tracker for video, audio, software and more (sign-up required).", url: "https://rutracker.org/", starred: true },
+    { id: '1337x', title: "1337x", description: "Popular public torrent site for video, audio, books and more.", url: "https://1337x.to", starred: true },
+    { id: 'rarbgdump', title: "RARBG Dump", description: "Continuation project for RARBG releases – high-quality video torrents.", url: "https://rarbg.to", starred: true },
+    { id: 'limetorrents', title: "LimeTorrents", description: "Public torrent index for video, audio and books.", url: "https://www.limetorrents.lol/" },
+    { id: 'torrentdownloads', title: "TorrentDownloads", description: "Public torrent index for video, audio and books.", url: "https://www.torrentdownloads.me/" },
   ]
 
   const moviesTVResources = [
@@ -53,17 +54,19 @@ export default function Home() {
   ]
 
   const bookResources = [
-    { id: 'book1', title: "Library Genesis", description: "Massive digital library for books and scientific articles.", url: "https://libgen.is" },
-    { id: 'book2', title: "Z-Library", description: "One of the world's largest online libraries.", url: "https://z-lib.org" },
+    { id: 'book1', title: "Library Genesis", description: "Massive digital library for books and scientific articles.", url: "https://libgen.is", starred: true },
+    { id: 'book2', title: "Z-Library", description: "One of the world's largest online libraries.", url: "https://z-lib.org", starred: true },
     { id: 'book3', title: "Project Gutenberg", description: "A library of over 60,000 free eBooks.", url: "https://www.gutenberg.org" },
-    { id: 'book4', title: "Sci-Hub", description: "A website for accessing scientific articles.", url: "https://sci-hub.se" },
+    { id: 'book4', title: "Sci-Hub", description: "A website for accessing scientific articles.", url: "https://sci-hub.se", starred: true },
   ]
 
   const gameResources = [
-    { id: 'game1', title: "FitGirl Repacks", description: "Popular site for compressed game downloads.", url: "https://fitgirl-repacks.site" },
-    { id: 'game2', title: "GOG Games", description: "DRM-free game downloads.", url: "https://gog-games.com" },
-    { id: 'game3', title: "Steam Underground", description: "Community for game cracks and discussions.", url: "https://cs.rin.ru" },
-    { id: 'game4', title: "CroHasIt", description: "Game cracks and updates repository.", url: "https://crackshash.com" },
+    { id: 'csrin', title: "CS.RIN.RU", description: "Download / Torrent / Signup Required", url: "https://cs.rin.ru", starred: true },
+    { id: 'steamrip', title: "SteamRIP", description: "Download / Pre-Installed Games", url: "https://steamrip.com", starred: true },
+    { id: 'ankergames', title: "AnkerGames", description: "Download / Pre-Installed Games", url: "https://ankergames.com", starred: true },
+    { id: 'goggames', title: "GOG Games", description: "DRM-free game downloads / Torrent", url: "https://gog-games.com", starred: true },
+    { id: 'fitgirl', title: "FitGirl Repacks", description: "Compressed game downloads / Torrent", url: "https://fitgirl-repacks.site", starred: true },
+    { id: 'steamunderground', title: "Steam Underground", description: "Community for game cracks and discussions", url: "https://cs.rin.ru", starred: true },
   ]
 
   const allResources = {
@@ -74,7 +77,11 @@ export default function Home() {
     'games': gameResources,
   }
 
-  const renderResourceSection = (title: string, resources: { id: string, title: string, description: string, url: string, starred?: boolean }[]) => {
+  const renderResourceSection = (
+    title: string,
+    resources: { id: string, title: string, description: string, url: string, starred?: boolean }[],
+    showStars: boolean = true
+  ) => {
     const filteredResources = filterResources(resources);
     
     // Don't render the section if there are no matching resources
@@ -89,30 +96,38 @@ export default function Home() {
             {title}
           </h2>
           <div className="space-y-2.5">
-            {filteredResources.map((resource: { id: string, title: string, description: string, url: string, starred?: boolean }, index: number) => (
-              <div
-                key={resource.id}
-                onClick={() => window.open(resource.url, '_blank', 'noopener,noreferrer')}
-                className="
-                  group flex items-center justify-between
-                  p-4 rounded-lg
-                  bg-card border border-border/50
-                  hover:border-primary/50 hover:bg-[hsl(var(--card-hover-bg))]
-                  hover:shadow-md hover:shadow-primary/5
-                  transition-all duration-300 cursor-pointer
-                  hover:translate-x-1
-                "
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors">{resource.title}</h3>
-                    <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+            {filteredResources.map((resource: { id: string, title: string, description: string, url: string, starred?: boolean }, index: number) => {
+              const isStarred = showStars && resource.starred;
+              return (
+                <div
+                  key={resource.id}
+                  onClick={() => window.open(resource.url, '_blank', 'noopener,noreferrer')}
+                  className="
+                    group flex items-center justify-between
+                    p-4 rounded-lg
+                    bg-card border border-border/50
+                    hover:border-primary/50 hover:bg-[hsl(var(--card-hover-bg))]
+                    hover:shadow-md hover:shadow-primary/5
+                    transition-all duration-300 cursor-pointer
+                    hover:translate-x-1
+                  "
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                        {isStarred && <span className="text-yellow-400">⭐</span>}
+                        {resource.title}
+                      </h3>
+                      <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                    </div>
+                    <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">
+                      {resource.description}
+                    </p>
                   </div>
-                  <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">{resource.description}</p>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </section>
       );
@@ -134,6 +149,7 @@ export default function Home() {
                 title={resource.title}
                 description={resource.description}
                 url={resource.url}
+                starred={showStars ? resource.starred : undefined}
               />
             </div>
           ))}
@@ -227,7 +243,7 @@ export default function Home() {
 
       {category === 'home' ? (
         Object.entries(allResources).map(([key, resources]) => 
-          renderResourceSection(getCategoryTitle(key), resources)
+          renderResourceSection(getCategoryTitle(key), resources, false)
         )
       ) : (
         category === 'legal' ? (

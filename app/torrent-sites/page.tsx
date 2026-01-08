@@ -14,10 +14,17 @@ export default function TorrentSitesPage() {
   const { viewMode, setViewMode } = useView();
 
   const torrentResources = [
-    { id: 'torrent1', title: "Torrentking", description: "A popular torrent indexing site with a wide variety of content.", url: "https://torrentking.com" },
-    { id: 'torrent2', title: "TorrentCue", description: "Curated torrent listings for various media types.", url: "https://torrentcue.com" },
-    { id: 'torrent3', title: "1337x", description: "One of the most popular torrent sites with a clean interface.", url: "https://1337x.to" },
-    { id: 'torrent4', title: "RARBG", description: "Known for high-quality video torrents and a user-friendly interface.", url: "https://rarbg.to" },
+    { id: 'rutracker', title: "RuTracker", description: "Massive Russian tracker for video, audio, software and more (sign-up required).", url: "https://rutracker.org/", starred: true },
+    { id: '1337x', title: "1337x", description: "Popular public torrent site for video, audio, NSFW and more.", url: "https://1337x.to", starred: true },
+    { id: 'rarbgdump', title: "RARBG Dump", description: "Continuation project for RARBG video, audio, games and books.", url: "https://rarbg.to", starred: true },
+    { id: 'limetorrents', title: "LimeTorrents", description: "Public torrent index for video, audio and books.", url: "https://www.limetorrents.lol/" },
+    { id: 'torrentdownloads', title: "TorrentDownloads", description: "Public torrent index for video, audio and books.", url: "https://www.torrentdownloads.me/" },
+    { id: 'extratorrent', title: "ExtraTorrent", description: "Public index for video, audio, books and NSFW.", url: "https://extratorrent.st/" },
+    { id: 'rutor', title: "rutor.info", description: "Russian tracker for video, audio, books, ROMs and magazines.", url: "https://rutor.info" },
+    { id: 'uztracker', title: "UZTracker", description: "Tracker for video, audio and books (use translator).", url: "https://uztracker.org" },
+    { id: 'nnmclub', title: "NNM-Club", description: "Russian tracker focused on video and audio.", url: "https://nnmclub.to" },
+    { id: 'torrenting', title: "Torrenting", description: "Torrent site for video, audio, books and NSFW (sign-up required).", url: "https://torrenting.com" },
+    { id: 'knaben', title: "Knaben.info", description: "Torrent site / proxy index.", url: "https://knaben.info" },
   ];
 
   const filterResources = (resources: { id: string, title: string, description: string, url: string }[]) => {
@@ -97,7 +104,10 @@ export default function TorrentSitesPage() {
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors">{resource.title}</h3>
+                  <h3 className="text-foreground font-semibold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                    {resource.starred && <span className="text-yellow-400">⭐</span>}
+                    {resource.title}
+                  </h3>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 </div>
                 <p className="text-sm text-muted-foreground opacity-80 group-hover:opacity-100 transition-opacity">{resource.description}</p>
@@ -117,6 +127,7 @@ export default function TorrentSitesPage() {
                 title={resource.title}
                 description={resource.description}
                 url={resource.url}
+                starred={resource.starred}
               />
             </div>
           ))}
