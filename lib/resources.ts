@@ -39,6 +39,7 @@ export const resources: Record<'anime' | 'torrent' | 'movies-tv' | 'books' | 'ga
     { id: 'vidbox', title: 'Vidbox', description: 'Movies / TV / Auto-Next', url: 'https://vidbox.cc' },
     { id: 'hydrahd', title: 'HydraHD', description: 'Movies / TV', url: 'https://hydrahd.com' },
     { id: 'mapple', title: 'mapple.tv', description: 'Movies / TV', url: 'https://mapple.tv' },
+    { id: 'rivo', title: 'RIVO', description: 'Movies / TV / Subtitles / Watch Parties', url: 'https://rivo.st' },
   ],
   books: [
     { id: 'libgen', title: 'Library Genesis', description: 'Books / Scientific articles', url: 'https://libgen.is', starred: true },
